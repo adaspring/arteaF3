@@ -1,0 +1,784 @@
+/* styles.css - Final Production Version */
+/* ================================================== */
+/* Global Styles */
+/* ================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #1a4731;
+    color: #f5f5f5;
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+}
+
+body.menu-open::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 20, 0, 0.2);
+    z-index: 90;
+    pointer-events: none;
+}
+
+a {
+    color: #a3e0be;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* ================================================== */
+/* Header & Navigation */
+/* ================================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hamburger-menu {
+    cursor: pointer;
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+    z-index: 100;
+    pointer-events: auto;
+}
+
+.hamburger-menu:hover {
+    transform: scale(1.1);
+}
+
+/* ================================================== */
+/* Flyout Menu System */
+/* ================================================== */
+nav#flyout-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #0d2a1c;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 200;
+    padding-top: 60px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    max-height: 100vh;
+    will-change: transform;
+    touch-action: pan-y;
+    pointer-events: auto;
+}
+
+nav#flyout-menu.open {
+    transform: translateX(0);
+}
+
+.menu-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+}
+
+.menu-close-btn:hover {
+    transform: rotate(90deg);
+}
+
+nav#flyout-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav#flyout-menu > ul {
+    padding-bottom: 50px;
+}
+
+nav#flyout-menu li {
+    position: relative;
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav#flyout-menu a {
+    color: #a3e0be !important;
+    text-decoration: none !important;
+    display: block;
+    pointer-events: auto;
+}
+
+nav#flyout-menu a:hover {
+    color: #fff !important;
+}
+
+/* Submenu Styling */
+nav#flyout-menu .submenu {
+    padding-left: 20px;
+    list-style: none;
+    margin-top: 8px;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+nav#flyout-menu .submenu.active {
+    max-height: none;
+    overflow-y: visible;
+}
+
+nav#flyout-menu .submenu li {
+    border-bottom: none;
+    padding: 8px 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+nav#flyout-menu .submenu.active li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.submenu-arrow {
+    display: inline-block !important;
+    margin-left: 10px;
+    font-size: 0.7em;
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+}
+
+.submenu-arrow.rotated {
+    transform: rotate(180deg);
+}
+
+header h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header h1 a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ================================================== */
+/* Breadcrumb */
+/* ================================================== */
+.breadcrumb {
+    padding: 10px 5%;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: #a3e0be !important;
+    text-decoration: none !important;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline !important;
+}
+
+.breadcrumb span {
+    color: #fff;
+}
+
+/* ================================================== */
+/* Title System */
+/* ================================================== */
+h1, h2, h3 {
+    color: #a3e0be;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    white-space: normal;
+    overflow-wrap: break-word;
+    max-width: 95%;
+    display: block;
+    width: 100%;
+}
+
+h2 {
+    max-width: 100% !important;  /* Remove the 95% restriction */
+   /* Add matching side padding */
+    white-space: nowrap; 
+    grid-column: 1 / -1;
+}
+
+h2 { border: 1px solid red !important; }
+.carousel { border: 1px solid lime; }
+.category-description { border: 1px solid blue; }
+
+
+h2 a, h3 a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+h2 a:hover, h3 a:hover {
+    text-decoration: underline !important;
+}
+
+/* ================================================== */
+/* Carousel System - UPDATED */
+/* ================================================== */
+.carousel-container {
+    margin: 60px auto;
+    width: 95%;
+    max-width: 1200px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    height: auto;
+    min-height: 350px;
+}
+
+.carousel-images {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border: 2px solid #ffd700 !important;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+.carousel-images img {
+    position: absolute;
+    max-width: 95%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #ffff00 !important;
+}
+
+.carousel-images img.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Chevron Arrow Styling for Carousel */
+.carousel button {
+    background: transparent; /* Remove background */
+    border: none;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+    color: transparent; /* Hide the original text but keep it for screen readers */
+    overflow: visible;
+    transition: transform 0.3s ease;
+}
+/* Create circular shadow background */
+.carousel button::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(26, 151, 51, 0.1);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 12px rgba(26, 151, 51, 0.5);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+/* Create the chevron shape */
+.carousel button::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-style: solid;
+    border-width: 2px 0 0 2px; /* Only top and left borders to create an angle */
+    border-color: #1a9733; /* Green color */
+    top: 50%;
+    left: 50%;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 2px rgba(26, 151, 51, 1.0));    
+}
+
+/* Left arrow - rotate to point left */
+.carousel button:first-of-type::before {
+    transform: translate(-30%, -50%) rotate(-45deg);
+}
+
+/* Right arrow - rotate to point right */
+.carousel button:last-of-type::before {
+    transform: translate(-70%, -50%) rotate(135deg);
+}
+
+/* Hover states */
+.carousel button:hover::after {
+    background: rgba(26, 151, 51, 0.15);
+    box-shadow: 0 0 15px rgba(26, 151, 51, 0.2);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.carousel button:hover::before {
+    filter: drop-shadow(0 0 4px rgba(26, 151, 51, 0.7));
+}
+
+
+/* Active/click states */
+.carousel button:active::after {
+    box-shadow: 0 0 18px rgba(26, 151, 51, 0.25);
+    transform: translate(-50%, -50%) scale(0.95);
+    background: rgba(26, 151, 51, 0.2);
+}
+
+.carousel button:active::before {
+    filter: drop-shadow(0 0 6px rgba(26, 151, 51, 0.9));
+    transform: translate(var(--tx, -50%), -50%) scale(0.95);
+}
+
+/* Arrow directions */
+.carousel button:first-of-type::before {
+    transform: translate(-35%, -50%) rotate(-45deg);
+}
+
+.carousel button:last-of-type::before {
+    transform: translate(-65%, -50%) rotate(135deg);
+}
+```
+/* Make sure buttons are properly positioned */
+
+
+/* Position the buttons */
+.carousel button:first-of-type {
+    left: 15px;
+}
+
+.carousel button:last-of-type {
+    right: 15px;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.indicator.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    transform: scale(1.2);
+}
+
+/* ================================================== */
+/* Grid System */
+/* ================================================== */
+.grid-container {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    padding: 2rem 5%;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 1;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    animation: fadeIn 0.5s ease forwards;
+    max-width: 100%;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.grid-item:hover img {
+    opacity: 0.85;
+}
+
+/* ================================================== */
+/* Content Sections */
+/* ================================================== */
+.content-section {
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: #f5f5f5;
+}
+
+.subsection {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+}
+
+.category-description {
+    margin-top: 20px;
+    font-style: italic;
+    color: #ccc;
+    padding: 0 20px;
+    line-height: 1.7;
+}
+
+/* ================================================== */
+/* Footer & Back to Top */
+/* ================================================== */
+footer {
+    margin-top: 50px;
+    padding: 40px 5%;
+    background-color: #0d2a1c;
+    text-align: center;
+}
+
+footer a {
+    color: #a3e0be;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    transform: translateY(-2px);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 99;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+}
+
+/* ================================================== */
+/* Lightbox System */
+/* ================================================== */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.lightbox-image {
+    max-height: 80vh;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.close-lightbox:hover {
+    transform: scale(1.2);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+/* Lightbox Arrows - Match Carousel Style */
+.lightbox-prev,
+.lightbox-next {
+    background: transparent !important;
+    border: none !important;
+    width: 50px !important;
+    height: 50px !important;
+    margin: 0 20px !important;
+    box-shadow: none !important;
+    position: relative !important;
+    transform: none !important;
+    top: auto !important;
+    margin: 0 !important;
+    color: transparent !important;
+    font-size: 0 !important;
+}
+
+.lightbox-prev {
+    left: 5px !important;
+}
+
+.lightbox-next {
+    right: 5px !important;
+    left: auto !important; /* Reset default positioning */
+}
+
+
+
+/* Create chevron using border technique */
+.lightbox-prev::before,
+.lightbox-next::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-style: solid;
+    border-width: 4px 0 0 4px;
+    border-color: #fff;
+    top: 50%;
+    left: 50%;
+    transition: border-color 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(5px 5px 5px rgba(255, 255, 255, 0.5));
+}
+
+/* Left arrow */
+.lightbox-prev::before {
+    transform: translate(-30%, -50%) rotate(-45deg);
+}
+
+/* Right arrow */
+.lightbox-next::before {
+    transform: translate(-70%, -50%) rotate(135deg);
+}
+
+/* Hover states */
+.lightbox-prev:hover::before,
+.lightbox-next:hover::before {
+    border-color: rgba(255, 255, 255, 0.8);
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.6));
+}
+
+/* Active states */
+.lightbox-prev:active::before,
+.lightbox-next:active::before {
+    border-color: #ccc;
+    transform: 
+        translate(var(--tx, -40%), -50%) 
+        rotate(var(--rot, -45deg)) 
+        scale(0.9);
+    filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 0, 0.4));
+}
+
+.lightbox-next:active::before {
+    --tx: -60%;
+    --rot: 135deg;
+}
+
+/* Remove original arrow text */
+.lightbox-prev span,
+.lightbox-next span {
+    display: none !important;
+}
+
+.lightbox-caption {
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ================================================== */
+/* Animations */
+/* ================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ================================================== */
+/* Mobile Responsiveness */
+/* ================================================== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .carousel {
+        min-height: 280px;
+    }
+
+    .carousel-images {
+        height: 400px;
+    }
+
+    nav#flyout-menu {
+        width: 200px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        gap: 20px;
+        padding: 1.5rem 5%;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.4rem;
+        line-height: 1.3;
+    }
+    h2 {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .carousel {
+        min-height: 230px;
+    }
+
+    .carousel-images {
+        height: 300px;
+    }
+
+    nav#flyout-menu {
+        width: 180px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        gap: 15px;
+        padding: 1rem 5%;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.3rem;
+        letter-spacing: 0.5px;
+    }
+    h2 {
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 769px) {
+    .carousel button:first-of-type {
+        left: 280px;
+    }
+    .carousel button:last-of-type {
+        right: 280px;
+    }
+}
