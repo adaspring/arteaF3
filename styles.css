@@ -396,11 +396,11 @@ h2 a:hover, h3 a:hover {
 
 /* Position the buttons */
 .carousel button:first-of-type {
-    left: 15px;
+    left: -50px;
 }
 
 .carousel button:last-of-type {
-    right: 15px;
+    right: -50px;
 }
 
 .carousel-indicators {
