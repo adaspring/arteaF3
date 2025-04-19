@@ -253,6 +253,11 @@ h2 a:hover, h3 a:hover {
 /* ================================================== */
 /* Carousel System - UPDATED */
 /* ================================================== */
+
+
+/* ================================================== */
+/* Carousel System - UPDATED */
+/* ================================================== */
 .carousel-container {
     margin: 60px auto;
     width: 95%;
@@ -267,10 +272,10 @@ h2 a:hover, h3 a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
     position: relative;
     height: auto;
     min-height: 350px;
+    padding: 0 60px; /* Space for the buttons */
 }
 
 .carousel-images {
@@ -309,14 +314,25 @@ h2 a:hover, h3 a:hover {
     border: none;
     width: 40px;
     height: 40px;
-    margin: 0 10px;
     cursor: pointer;
-    position: relative;
+    position: absolute;
     z-index: 5;
     color: transparent; /* Hide the original text but keep it for screen readers */
     overflow: visible;
     transition: transform 0.3s ease;
+    top: 50%;
+    transform: translateY(-50%);
 }
+
+/* Position the buttons outside the container */
+.carousel button:first-of-type {
+    left: -50px;
+}
+
+.carousel button:last-of-type {
+    right: -50px;
+}
+
 /* Create circular shadow background */
 .carousel button::after {
     content: '';
@@ -350,12 +366,12 @@ h2 a:hover, h3 a:hover {
 
 /* Left arrow - rotate to point left */
 .carousel button:first-of-type::before {
-    transform: translate(-30%, -50%) rotate(-45deg);
+    transform: translate(-35%, -50%) rotate(-45deg);
 }
 
 /* Right arrow - rotate to point right */
 .carousel button:last-of-type::before {
-    transform: translate(-70%, -50%) rotate(135deg);
+    transform: translate(-65%, -50%) rotate(135deg);
 }
 
 /* Hover states */
@@ -369,7 +385,6 @@ h2 a:hover, h3 a:hover {
     filter: drop-shadow(0 0 4px rgba(26, 151, 51, 0.7));
 }
 
-
 /* Active/click states */
 .carousel button:active::after {
     box-shadow: 0 0 18px rgba(26, 151, 51, 0.25);
@@ -382,33 +397,15 @@ h2 a:hover, h3 a:hover {
     transform: translate(var(--tx, -50%), -50%) scale(0.95);
 }
 
-/* Arrow directions */
-.carousel button:first-of-type::before {
-    transform: translate(-35%, -50%) rotate(-45deg);
-}
-
-.carousel button:last-of-type::before {
-    transform: translate(-65%, -50%) rotate(135deg);
-}
-```
-/* Make sure buttons are properly positioned */
-
-
-/* Position the buttons */
-.carousel button:first-of-type {
-    left: -50px;
-}
-
-.carousel button:last-of-type {
-    right: -50px;
-}
-
 .carousel-indicators {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 15px;
 }
+
+
+
 
 .indicator {
     width: 10px;
@@ -717,10 +714,19 @@ footer a:hover {
 
     .carousel {
         min-height: 280px;
+        padding: 0 40px; /* Less padding on smaller screens */
     }
 
     .carousel-images {
         height: 400px;
+    }
+    
+    .carousel button:first-of-type {
+        left: -30px;
+    }
+    
+    .carousel button:last-of-type {
+        right: -30px;
     }
 
     nav#flyout-menu {
@@ -749,10 +755,19 @@ footer a:hover {
 
     .carousel {
         min-height: 230px;
+        padding: 0 30px; /* Even less padding on mobile */
     }
 
     .carousel-images {
         height: 300px;
+    }
+    
+    .carousel button:first-of-type {
+        left: -20px;
+    }
+    
+    .carousel button:last-of-type {
+        right: -20px;
     }
 
     nav#flyout-menu {
@@ -782,3 +797,4 @@ footer a:hover {
         right: 280px;
     }
 }
+
