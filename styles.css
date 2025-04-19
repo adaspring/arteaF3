@@ -253,14 +253,50 @@ h2 a:hover, h3 a:hover {
 /* ================================================== */
 /* Carousel System - UPDATED */
 /* ================================================== */
-.carousel-container {
-    margin: 60px auto;
-    width: 95%;
-    max-width: 1200px;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+/* New carousel-container rules */
+.carousel-container { 
+  position: relative; /* Essential for arrow positioning */
+  width: 90vw;
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 20px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+/* Override previous carousel rules */
+.carousel-container > .carousel-images {
+  height: auto !important;
+  overflow: visible !important;
+  border: none !important;
+  display: grid; /* New layout system */
+  grid-auto-flow: column;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto; /* Enable native scrolling */
+}
+
+/* Arrow positioning fix */
+.carousel-container > button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.carousel-container > button:first-child {
+  left: -50px;
+}
+
+.carousel-container > button:last-child {
+  right: -50px;
+}
+
+/* Image sizing */
+.carousel-container img {
+  width: 100%;
+  height: auto;
+  scroll-snap-align: start;
+  flex: 0 0 auto;
 }
 
 .carousel {
@@ -740,7 +776,37 @@ footer a:hover {
     h2 {
         white-space: nowrap;
     }
+
+  .carousel-container {
+    width: 95vw;
+    padding: 10px;
+  }
+  
+  .carousel-container > button {
+    position: sticky;
+    background: rgba(0,0,0,0.7);
+    left: 10px;
+    right: 10px;
+    transform: none;
+  }
+  
+  .carousel-container > button:first-child {
+    left: 5px;
+  }
+  
+  .carousel-container > button:last-child {
+    right: 5px;
+    left: auto;
+  }
 }
+
+
+
+
+
+
+    
+
 
 @media (max-width: 480px) {
     header h1 {
