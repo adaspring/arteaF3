@@ -333,6 +333,19 @@ h2 a:hover, h3 a:hover {
     right: -30px;
 }
 
+/* Remove the general :active rule entirely */
+/* Add these specific replacements: */
+
+/* Left Arrow */
+.carousel button:first-of-type:active::before {
+    transform: translate(-35%, -50%) rotate(-45deg) scale(0.95);
+}
+
+/* Right Arrow */
+.carousel button:last-of-type:active::before {
+    transform: translate(-65%, -50%) rotate(135deg) scale(0.95);
+}
+
 /* Create circular shadow background */
 .carousel button::after {
     content: '';
@@ -392,9 +405,18 @@ h2 a:hover, h3 a:hover {
     background: rgba(26, 151, 51, 0.2);
 }
 
-.carousel button:active::before {
-    filter: drop-shadow(0 0 6px rgba(26, 151, 51, 0.9));
-    transform: translate(var(--tx, -50%), -50%) scale(0.95);
+/* Left Arrow Background */
+.carousel button:first-of-type:active::after {
+    box-shadow: 0 0 18px rgba(26, 151, 51, 0.25);
+    transform: translate(-50%, -50%) scale(0.95); /* Keep this translation */
+    background: rgba(26, 151, 51, 0.2);
+}
+
+/* Right Arrow Background */
+.carousel button:last-of-type:active::after {
+    box-shadow: 0 0 18px rgba(26, 151, 51, 0.25);
+    transform: translate(-50%, -50%) scale(0.95);
+    background: rgba(26, 151, 51, 0.2);
 }
 
 .carousel-indicators {
