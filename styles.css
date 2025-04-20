@@ -326,11 +326,11 @@ h2 a:hover, h3 a:hover {
 
 /* Position the buttons outside the container */
 .carousel button:first-of-type {
-    left: -50px;
+    left: -30px;
 }
 
 .carousel button:last-of-type {
-    right: -50px;
+    right: -30px;
 }
 
 /* Create circular shadow background */
