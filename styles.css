@@ -763,11 +763,11 @@ footer a:hover {
     }
     
     .carousel button:first-of-type {
-        left: -15px;
+        left: -5px;
     }
     
     .carousel button:last-of-type {
-        right: -15px;
+        right: -5px;
     }
 
     nav#flyout-menu {
