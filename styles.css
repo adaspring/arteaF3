@@ -326,11 +326,11 @@ h2 a:hover, h3 a:hover {
 
 /* Position the buttons outside the container */
 .carousel button:first-of-type {
-    left: -30px;
+    left: 10px;
 }
 
 .carousel button:last-of-type {
-    right: -30px;
+    right: 10px;
 }
 
 /* Create circular shadow background */
@@ -353,8 +353,8 @@ h2 a:hover, h3 a:hover {
 .carousel button::before {
     content: '';
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-style: solid;
     border-width: 2px 0 0 2px; /* Only top and left borders to create an angle */
     border-color: #1a9733; /* Green color */
@@ -366,12 +366,12 @@ h2 a:hover, h3 a:hover {
 
 /* Left arrow - rotate to point left */
 .carousel button:first-of-type::before {
-    transform: translate(-35%, -50%) rotate(-45deg);
+    transform: translate(-30%, -50%) rotate(-45deg);
 }
 
 /* Right arrow - rotate to point right */
 .carousel button:last-of-type::before {
-    transform: translate(-65%, -50%) rotate(135deg);
+    transform: translate(-70%, -50%) rotate(135deg);
 }
 
 /* Hover states */
