@@ -388,7 +388,7 @@ h2 a:hover, h3 a:hover {
 }
 
 /* Hover states */
-/*.carousel button:hover::after {
+.carousel button:hover::after {
     background: rgba(26, 151, 51, 0.15);
     box-shadow: 0 0 15px rgba(26, 151, 51, 0.2);
     transform: translate(-50%, -50%) scale(1.05);
@@ -397,16 +397,7 @@ h2 a:hover, h3 a:hover {
 .carousel button:hover::before {
     filter: drop-shadow(0 0 4px rgba(26, 151, 51, 0.7));
 }
-/* Replace :active with :hover */
-.carousel button:hover::before {
-    filter: drop-shadow(0 0 6px rgba(26, 151, 51, 0.9));
-    transform: translate(var(--tx, -50%), -50%) scale(0.95); /* Active state scale */
-}
 
-.carousel button:hover::after {
-    background: rgba(26, 151, 51, 0.2);
-    transform: translate(-50%, -50%) scale(0.95); /* Active state scale */
-}
 /* Active/click states */
 
 /* Left Arrow Background */
