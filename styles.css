@@ -640,8 +640,8 @@ h3 {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
+  display: none;
 }
-
 .hidden-content.visible {
   max-height: 2000px; /* Adjust based on longest content */
 }
@@ -660,6 +660,21 @@ h3 {
   border-right: none;
   animation: none;
 }
+
+/* Update hidden content styles to ensure proper animation */
+
+
+
+
+/* Remove the original typing animation from content1 */
+#content1.visible p {
+  white-space: normal;
+  border-right: none;
+  animation: none;
+}
+
+
+
 
 
 
@@ -883,6 +898,11 @@ footer a:hover {
     to { width: 100% }
 }
 
+@keyframes cursor-blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 @keyframes blink-caret {
     from, to { border-color: transparent }
     50% { border-color: #a3e0be; }
@@ -895,6 +915,26 @@ footer a:hover {
     display: inline-block; /* Changed from white-space: nowrap */
     vertical-align: top;
 }
+
+/* Add these styles to your styles.css file */
+
+/* Typing container */
+.typing-container {
+  display: inline;
+  white-space: normal;
+}
+
+/* Cursor styling */
+.typing-cursor {
+  display: inline-block;
+  color: #a3e0be;
+  font-weight: bold;
+  animation: cursor-blink 0.7s infinite;
+  margin-left: 1px;
+}
+
+/* Cursor blinking animation */
+
 
 
 
