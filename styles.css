@@ -570,6 +570,12 @@ h3 {
     line-height: 1.7;
 }
 
+   .hidden-content {
+      display: none; /* Hidden by default */
+   }
+   .hidden-content.visible {
+     display: block;
+   }
 
 
 /* ================================================== */
