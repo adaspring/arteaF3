@@ -300,63 +300,54 @@ function goToSlide(id, index) {
     }
 }
 
-
-//Read more Functionality 
+// Read More Functionality - Corrected Version
 document.addEventListener('DOMContentLoaded', function() {
   const readMoreButtons = document.querySelectorAll('.read-more');
   
   readMoreButtons.forEach(button => {
     button.addEventListener('click', function() {
       const content = this.parentElement.nextElementSibling;
-      const paragraph = content.querySelector('p'); // Target the <p> specifically
+      const paragraph = content.querySelector('p');
       const isExpanded = this.getAttribute('aria-expanded') === 'true';
 
+      // Toggle visibility states
       content.classList.toggle('visible');
       this.setAttribute('aria-expanded', !isExpanded);
       content.setAttribute('aria-hidden', isExpanded);
 
       if (!isExpanded) {
+        // ========== EXPANDING CONTENT ==========
         // Reset animation
         paragraph.style.animation = 'none';
         void paragraph.offsetHeight; // Trigger reflow
         
-        // Calculate duration based on paragraph text
+        // Calculate duration based on text length
         const textLength = paragraph.textContent.length;
         const duration = Math.min(3, textLength / 20);
         
-        // Apply animation to paragraph only
+        // Apply typing animation to paragraph
         paragraph.style.animation = `typing ${duration}s steps(40, end), 
                                    blink-caret 0.75s step-end infinite`;
         paragraph.style.overflow = 'hidden';
         paragraph.style.whiteSpace = 'nowrap';
         paragraph.style.borderRight = '2px solid #a3e0be';
 
+        // Cleanup after animation
         setTimeout(() => {
           paragraph.style.whiteSpace = 'normal';
           paragraph.style.borderRight = 'none';
         }, duration * 1000);
+
       } else {
+        // ========== COLLAPSING CONTENT ==========
+        // Reset paragraph styles
         paragraph.style.animation = 'none';
+        paragraph.style.whiteSpace = 'normal';
+        paragraph.style.borderRight = 'none';
       }
-// Trigger reflow to restart animation
-        void content.offsetWidth;
-
-        // Add cursor effect
-        content.style.borderRight = '2px solid #a3e0be';
-        content.style.animation = `typing ${duration}s steps(40, end), 
-                                 blink-caret 0.75s step-end infinite`;
-
-        // Remove cursor after animation
-        setTimeout(() => {
-          content.style.borderRight = 'none';
-        }, duration * 1000);
-      } else {
-        content.style.display = 'none';
-        content.style.animation = 'none';
-    }     
-    });
-  });
-});
+    }); // End of click handler
+  }); // End of forEach
+}); // End of DOMContentLoaded
 
         
 
