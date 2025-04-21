@@ -857,7 +857,22 @@ footer a:hover {
     from, to { border-color: transparent }
     50% { border-color: #a3e0be; }
 }
+@keyframes revealBlock {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
+.typing-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(10px);
+}
 .typing-animation {
     animation: typing 3s steps(40, end),
                blink-caret 0.75s step-end infinite;
