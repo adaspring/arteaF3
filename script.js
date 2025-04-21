@@ -300,58 +300,43 @@ function goToSlide(id, index) {
     }
 }
 
-// Read More Functionality - Final Working Version
+
+//Readme 
+
 document.addEventListener('DOMContentLoaded', function() {
   const readMoreButtons = document.querySelectorAll('.read-more');
-  
+
   readMoreButtons.forEach(button => {
     button.addEventListener('click', function(e) {
       e.preventDefault();
       const content = document.getElementById(this.getAttribute('aria-controls'));
       const isExpanded = this.getAttribute('aria-expanded') === 'true';
 
-      // Toggle states
+      // Toggle aria and visibility
       this.setAttribute('aria-expanded', !isExpanded);
       content.setAttribute('aria-hidden', isExpanded);
       content.classList.toggle('visible');
 
-      // Apply typing effect ONLY to content1
+      // Special animation only for #content1
       if (content.id === 'content1') {
-        const paragraph = content.querySelector('p');
-        
-        if (!isExpanded) {
-          // Reset animation
-          paragraph.style.animation = 'none';
-          void paragraph.offsetHeight;
-          
-          // Calculate duration
-          const textLength = paragraph.textContent.length;
-          const duration = Math.max(1, Math.min(3, textLength / 20));
-          
-          // Apply animation
-          paragraph.style.animation = `typing ${duration}s steps(40, end), 
-                                     blink-caret 0.75s step-end infinite`;
-          paragraph.style.overflow = 'hidden';
-          paragraph.style.whiteSpace = 'nowrap';
-          paragraph.style.borderRight = '2px solid #a3e0be';
+        const lines = content.querySelectorAll('.typing-line');
 
-          // Cleanup after animation
-          setTimeout(() => {
-            paragraph.style.whiteSpace = 'normal';
-            paragraph.style.borderRight = 'none';
-          }, duration * 1000);
+        if (!isExpanded) {
+          lines.forEach((line, index) => {
+            line.style.animation = `revealBlock 0.6s ease ${index * 0.4}s forwards`;
+          });
         } else {
-          // Reset styles
-          paragraph.style.animation = 'none';
-          paragraph.style.whiteSpace = 'normal';
-          paragraph.style.borderRight = 'none';
+          lines.forEach(line => {
+            line.style.animation = 'none';
+            line.style.opacity = '0';
+            line.style.transform = 'translateY(10px)';
+          });
         }
       }
+
+      // For other content blocks, no animation needed
     });
   });
-});
-        lines.forEach((line, index) => {
-  line.style.animation = `revealBlock 1s ease ${index * 0.5}s forwards`;
 });
 
 
