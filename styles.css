@@ -625,13 +625,26 @@ h3 {
     position: relative;
     overflow: hidden;
     border-right: 2px solid transparent; /* For cursor effect */
+    display: none;
 }
+
 
 .hidden-content.visible {
   display: block;
   opacity: 1;
   max-height: 1000vh; /* Adjust based on content */
 }
+
+/* Essential for animation to work */
+
+.hidden-content.visible p {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid transparent;
+}
+
+
+
 
 
 /* ================================================== */
