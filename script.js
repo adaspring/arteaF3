@@ -300,7 +300,7 @@ function goToSlide(id, index) {
     }
 }
 
-// Read More Functionality - Corrected Version
+// Read More Functionality - Final Working Version
 document.addEventListener('DOMContentLoaded', function() {
   const readMoreButtons = document.querySelectorAll('.read-more');
   
@@ -316,16 +316,15 @@ document.addEventListener('DOMContentLoaded', function() {
       content.setAttribute('aria-hidden', isExpanded);
 
       if (!isExpanded) {
-        // ========== EXPANDING CONTENT ==========
         // Reset animation
         paragraph.style.animation = 'none';
-        void paragraph.offsetHeight; // Trigger reflow
+        void paragraph.offsetHeight; // Force reflow
         
-        // Calculate duration based on text length
+        // Calculate duration
         const textLength = paragraph.textContent.length;
         const duration = Math.min(3, textLength / 20);
         
-        // Apply typing animation to paragraph
+        // Apply animation
         paragraph.style.animation = `typing ${duration}s steps(40, end), 
                                    blink-caret 0.75s step-end infinite`;
         paragraph.style.overflow = 'hidden';
@@ -337,18 +336,15 @@ document.addEventListener('DOMContentLoaded', function() {
           paragraph.style.whiteSpace = 'normal';
           paragraph.style.borderRight = 'none';
         }, duration * 1000);
-
       } else {
-        // ========== COLLAPSING CONTENT ==========
-        // Reset paragraph styles
+        // Reset styles when collapsing
         paragraph.style.animation = 'none';
         paragraph.style.whiteSpace = 'normal';
         paragraph.style.borderRight = 'none';
       }
-    }); // End of click handler
-  }); // End of forEach
-}); // End of DOMContentLoaded
-
+    });
+  });
+});
         
 
 
