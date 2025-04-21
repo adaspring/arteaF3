@@ -300,22 +300,18 @@ function goToSlide(id, index) {
     }
 }
 
-
-// Read More Toggle Functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const readMoreButtons = document.querySelectorAll('.read-more');
-  
-  readMoreButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const content = this.parentElement.nextElementSibling;
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
-
-      // Toggle visibility
-      content.classList.toggle('visible');
-      this.setAttribute('aria-expanded', !isExpanded);
-      content.setAttribute('aria-hidden', isExpanded);
-    });
-  });
+// Modify the click handler in the Read More Toggle section:
+button.addEventListener('click', function() {
+    const content = this.parentElement.nextElementSibling;
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    
+    // Toggle visibility
+    content.classList.toggle('visible');
+    this.setAttribute('aria-expanded', !isExpanded);
+    content.setAttribute('aria-hidden', isExpanded);
+    
+    // Update button text
+    this.innerHTML = isExpanded ? 'Show more...' : 'Show less...';
 });
 
 
