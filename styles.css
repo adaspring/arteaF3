@@ -624,7 +624,6 @@ h3 {
 .hidden-content {
     position: relative;
     overflow: hidden;
-    white-space: nowrap;
     border-right: 2px solid transparent; /* For cursor effect */
 }
 
@@ -846,9 +845,12 @@ footer a:hover {
     }
 }
 
+
+
+/* Update typing animation */
 @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+    from { max-width: 0 }
+    to { max-width: 100% }
 }
 
 @keyframes blink-caret {
@@ -856,16 +858,13 @@ footer a:hover {
     50% { border-color: #a3e0be; }
 }
 
-/* Add this new rule */
 .typing-animation {
     animation: typing 3s steps(40, end),
                blink-caret 0.75s step-end infinite;
-    white-space: nowrap;
     overflow: hidden;
-    border-right: 2px solid #a3e0be;
+    display: inline-block; /* Changed from white-space: nowrap */
+    vertical-align: top;
 }
-
-
 
 /* ================================================== */
 /* Mobile Responsiveness */
