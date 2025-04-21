@@ -570,12 +570,20 @@ h3 {
     line-height: 1.7;
 }
 
-   .hidden-content {
-      display: none; /* Hidden by default */
-   }
-   .hidden-content.visible {
-     display: block;
-   }
+   /* Add transitions for smoother toggling */
+.hidden-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.hidden-content.visible {
+  display: block;
+  opacity: 1;
+  max-height: 1000vh; /* Adjust based on content */
+}
 
 
 /* ================================================== */
