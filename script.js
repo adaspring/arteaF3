@@ -350,7 +350,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-        
+        lines.forEach((line, index) => {
+  line.style.animation = `revealBlock 1s ease ${index * 0.5}s forwards`;
+});
 
 
 
