@@ -301,7 +301,9 @@ function goToSlide(id, index) {
 }
 
 
+// ======================
 // Read More Toggle Functionality
+// ======================
 document.addEventListener('DOMContentLoaded', function() {
   const readMoreButtons = document.querySelectorAll('.read-more');
   
@@ -314,10 +316,12 @@ document.addEventListener('DOMContentLoaded', function() {
       content.classList.toggle('visible');
       this.setAttribute('aria-expanded', !isExpanded);
       content.setAttribute('aria-hidden', isExpanded);
+      
+      // Update button text
+      this.innerHTML = isExpanded ? 'Show more...' : 'Show less...';
     });
   });
 });
-
 
 
 
