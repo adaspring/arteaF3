@@ -301,7 +301,8 @@ function goToSlide(id, index) {
 }
 
 
-// Read More Toggle Functionality
+//Read more Functionality 
+
 document.addEventListener('DOMContentLoaded', function() {
   const readMoreButtons = document.querySelectorAll('.read-more');
   
@@ -314,6 +315,34 @@ document.addEventListener('DOMContentLoaded', function() {
       content.classList.toggle('visible');
       this.setAttribute('aria-expanded', !isExpanded);
       content.setAttribute('aria-hidden', isExpanded);
+
+      // Add typing animation
+      if (!isExpanded) {
+        content.style.display = 'block';
+        content.style.width = '0';
+        content.classList.add('typing-animation');
+        
+        // Calculate animation duration based on content length
+        const textLength = content.textContent.length;
+        const duration = Math.min(3, textLength / 20); // Max 3 seconds
+        content.style.animationDuration = `${duration}s`;
+
+        // Trigger reflow to restart animation
+        void content.offsetWidth;
+
+        // Add cursor effect
+        content.style.borderRight = '2px solid #a3e0be';
+        content.style.animation = `typing ${duration}s steps(40, end), 
+                                 blink-caret 0.75s step-end infinite`;
+
+        // Remove cursor after animation
+        setTimeout(() => {
+          content.style.borderRight = 'none';
+        }, duration * 1000);
+      } else {
+        content.style.display = 'none';
+        content.style.animation = 'none';
+      }
     });
   });
 });
