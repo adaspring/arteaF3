@@ -545,6 +545,26 @@ h3 {
     display: inline-block;
 }
 
+
+/* ================================================== */
+/* Read More Button Styles */
+/* ================================================== */
+.read-more {
+    background: none;
+    border: none;
+    color: #a3e0be;
+    cursor: pointer;
+    padding: 0 3px;
+    font: inherit;
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.read-more:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
 .video-container {
     margin: 2rem 0;
     background: rgba(0, 0, 0, 0.2);
@@ -602,11 +622,10 @@ h3 {
 
    /* Add transitions for smoother toggling */
 .hidden-content {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  max-height: 0;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid transparent; /* For cursor effect */
 }
 
 .hidden-content.visible {
@@ -826,6 +845,27 @@ footer a:hover {
         opacity: 1;
     }
 }
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #a3e0be; }
+}
+
+/* Add this new rule */
+.typing-animation {
+    animation: typing 3s steps(40, end),
+               blink-caret 0.75s step-end infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #a3e0be;
+}
+
+
 
 /* ================================================== */
 /* Mobile Responsiveness */
