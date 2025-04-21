@@ -305,42 +305,47 @@ document.addEventListener('DOMContentLoaded', function() {
   const readMoreButtons = document.querySelectorAll('.read-more');
   
   readMoreButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const content = this.parentElement.nextElementSibling;
-      const paragraph = content.querySelector('p');
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const content = document.getElementById(this.getAttribute('aria-controls'));
       const isExpanded = this.getAttribute('aria-expanded') === 'true';
 
-      // Toggle visibility states
-      content.classList.toggle('visible');
+      // Toggle states
       this.setAttribute('aria-expanded', !isExpanded);
       content.setAttribute('aria-hidden', isExpanded);
+      content.classList.toggle('visible');
 
-      if (!isExpanded) {
-        // Reset animation
-        paragraph.style.animation = 'none';
-        void paragraph.offsetHeight; // Force reflow
+      // Apply typing effect ONLY to content1
+      if (content.id === 'content1') {
+        const paragraph = content.querySelector('p');
         
-        // Calculate duration
-        const textLength = paragraph.textContent.length;
-        const duration = Math.min(3, textLength / 20);
-        
-        // Apply animation
-        paragraph.style.animation = `typing ${duration}s steps(40, end), 
-                                   blink-caret 0.75s step-end infinite`;
-        paragraph.style.overflow = 'hidden';
-        paragraph.style.whiteSpace = 'nowrap';
-        paragraph.style.borderRight = '2px solid #a3e0be';
+        if (!isExpanded) {
+          // Reset animation
+          paragraph.style.animation = 'none';
+          void paragraph.offsetHeight;
+          
+          // Calculate duration
+          const textLength = paragraph.textContent.length;
+          const duration = Math.max(1, Math.min(3, textLength / 20));
+          
+          // Apply animation
+          paragraph.style.animation = `typing ${duration}s steps(40, end), 
+                                     blink-caret 0.75s step-end infinite`;
+          paragraph.style.overflow = 'hidden';
+          paragraph.style.whiteSpace = 'nowrap';
+          paragraph.style.borderRight = '2px solid #a3e0be';
 
-        // Cleanup after animation
-        setTimeout(() => {
+          // Cleanup after animation
+          setTimeout(() => {
+            paragraph.style.whiteSpace = 'normal';
+            paragraph.style.borderRight = 'none';
+          }, duration * 1000);
+        } else {
+          // Reset styles
+          paragraph.style.animation = 'none';
           paragraph.style.whiteSpace = 'normal';
           paragraph.style.borderRight = 'none';
-        }, duration * 1000);
-      } else {
-        // Reset styles when collapsing
-        paragraph.style.animation = 'none';
-        paragraph.style.whiteSpace = 'normal';
-        paragraph.style.borderRight = 'none';
+        }
       }
     });
   });
