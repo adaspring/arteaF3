@@ -300,7 +300,9 @@ function goToSlide(id, index) {
     }
 }
 
-// Read More Functionality - Final Working Version
+// Add this function to your script.js file
+
+// Read More Functionality - Updated for Multi-line Typing Effect
 document.addEventListener('DOMContentLoaded', function() {
   const readMoreButtons = document.querySelectorAll('.read-more');
   
@@ -320,36 +322,57 @@ document.addEventListener('DOMContentLoaded', function() {
         const paragraph = content.querySelector('p');
         
         if (!isExpanded) {
-          // Reset animation
-          paragraph.style.animation = 'none';
-          void paragraph.offsetHeight;
+          // First, show the content
+          content.style.display = 'block';
           
-          // Calculate duration
-          const textLength = paragraph.textContent.length;
-          const duration = Math.max(1, Math.min(3, textLength / 20));
+          // Split text into words
+          const text = paragraph.textContent;
+          const words = text.split(' ');
           
-          // Apply animation
-          paragraph.style.animation = `typing ${duration}s steps(40, end), 
-                                     blink-caret 0.75s step-end infinite`;
-          paragraph.style.overflow = 'hidden';
-          paragraph.style.whiteSpace = 'nowrap';
-          paragraph.style.borderRight = '2px solid #a3e0be';
-
-          // Cleanup after animation
-          setTimeout(() => {
-            paragraph.style.whiteSpace = 'normal';
-            paragraph.style.borderRight = 'none';
-          }, duration * 1000);
+          // Clear the paragraph
+          paragraph.textContent = '';
+          paragraph.style.whiteSpace = 'normal'; // Allow wrapping
+          
+          // Create a typing container with cursor
+          const typingContainer = document.createElement('span');
+          typingContainer.classList.add('typing-container');
+          paragraph.appendChild(typingContainer);
+          
+          // Add cursor element
+          const cursor = document.createElement('span');
+          cursor.classList.add('typing-cursor');
+          cursor.textContent = '|';
+          paragraph.appendChild(cursor);
+          
+          // Type each word with delay
+          let delay = 0;
+          const wordDelay = 100; // Milliseconds between words
+          
+          words.forEach((word, index) => {
+            setTimeout(() => {
+              // Add the word plus a space
+              typingContainer.textContent += word + ' ';
+              
+              // If it's the last word, remove the cursor after a short delay
+              if (index === words.length - 1) {
+                setTimeout(() => {
+                  cursor.style.display = 'none';
+                }, 500);
+              }
+            }, delay);
+            
+            // Increase delay - longer words take longer to type
+            delay += word.length * 40 + wordDelay;
+          });
         } else {
-          // Reset styles
-          paragraph.style.animation = 'none';
-          paragraph.style.whiteSpace = 'normal';
-          paragraph.style.borderRight = 'none';
+          // When collapsing, reset the paragraph to original state
+          paragraph.innerHTML = paragraph.textContent;
         }
       }
     });
   });
 });
+
         
 
 
