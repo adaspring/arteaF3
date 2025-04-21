@@ -615,6 +615,37 @@ h3 {
   max-height: 1000vh; /* Adjust based on content */
 }
 
+/* Read More Button Styles */
+.read-more {
+    background: transparent;
+    border: none;
+    color: #a3e0be;
+    cursor: pointer;
+    padding: 0.25em 0.5em;
+    margin-left: 0.5em;
+    font-family: 'Georgia', serif;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.read-more:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.read-more:focus {
+    outline: 1px dotted #a3e0be;
+}
+
+.read-more[aria-expanded="true"]::after {
+    content: " ▲";
+}
+
+.read-more[aria-expanded="false"]::after {
+    content: " ▼";
+}
 
 /* ================================================== */
 /* Footer & Back to Top */
