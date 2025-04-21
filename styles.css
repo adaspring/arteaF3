@@ -878,23 +878,28 @@ footer a:hover {
 
 
 /* Update typing animation */
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+
+
+@keyframes revealBlock {
+  from {
+    max-width: 0;
+    opacity: 0;
+  }
+  to {
+    max-width: 1000px;
+    opacity: 1;
+  }
 }
 
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #a3e0be; }
+.typing-line {
+  display: block;
+  overflow: hidden;
+  white-space: normal;
+  animation: revealBlock 1s ease forwards;
+  opacity: 0;
 }
 
-.typing-animation {
-    animation: typing 3s steps(40, end),
-               blink-caret 0.75s step-end infinite;
-    overflow: hidden;
-    display: inline-block; /* Changed from white-space: nowrap */
-    vertical-align: top;
-}
+
 
 
 
