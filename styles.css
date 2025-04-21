@@ -497,10 +497,40 @@ h2 a:hover, h3 a:hover {
 /* Content Sections - Enhanced */
 /* ================================================== */
 .subsection {
+
+    content-visibility: auto; /* New property */
+    contain-intrinsic-size: auto 1000px; /* Better syntax */
     margin-bottom: 2.5rem;
     padding: 1.5rem;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 6px;
+}
+
+
+/* New sub-subsection styles */
+.sub-subsection {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    contain: content; /* Limits browser recalc scope */
+}
+
+/* h4 heading styles */
+h4 {
+    color: #a3e0be !important; /* Needs !important */
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+h4::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #a3e0be;
 }
 
 h3 {
