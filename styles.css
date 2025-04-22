@@ -37,10 +37,19 @@ a {
     transition: color 0.2s ease;
 }
 
-.category-description a {
-  color: inherit; /* Use the parent's color */
-  text-decoration: none; /* Remove underline */
+/* Add/modify these rules in your existing CSS */
+.category-description {
+    font-size: 0.9rem; /* Smaller text size */
+    text-align: justify; /* Full justification */
+    hyphens: auto; /* Better word breaking */
+    -webkit-hyphens: auto; /* Safari support */
+    text-justify: inter-word; /* Better spacing */
+    padding: 12px 20px; /* Adjust padding as needed */
+    line-height: 1.5; /* Tighter line height */
+    margin: 15px auto 0; /* Center the container */
+    max-width: 95%; /* Match carousel width */
 }
+
 
 a:hover {
     color: #fff;
@@ -932,7 +941,14 @@ footer a:hover {
         margin: 1rem 0;
         padding: 10px;
         }
+    
+.category-description {
+        font-size: 0.85rem;
+        padding: 10px 15px;
+      }
+
 }
+
 
 @media (max-width: 480px) {
     header h1 {
