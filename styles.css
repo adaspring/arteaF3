@@ -37,6 +37,11 @@ a {
     transition: color 0.2s ease;
 }
 
+.category-description a {
+  color: inherit; /* Use the parent's color */
+  text-decoration: none; /* Remove underline */
+}
+
 a:hover {
     color: #fff;
     text-decoration: underline;
