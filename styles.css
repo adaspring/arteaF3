@@ -74,15 +74,14 @@ header {
     transform: scale(1.1);
 }
 
-
 /* ================================================== */
-/* Flyout Menu System - UPDATED */
+/* Flyout Menu System - CORRECTED */
 /* ================================================== */
 nav#flyout-menu {
     position: fixed;
     top: 0;
     right: 0;
-    width: 250px; /* Original width restored */
+    width: 250px;
     height: 100vh;
     background-color: #0d2a1c;
     transform: translateX(100%);
@@ -103,44 +102,58 @@ nav#flyout-menu.open {
     transform: translateX(0);
 }
 
-nav#flyout-menu > ul > li {
-    padding: 0 !important; /* Override original li padding */
+/* Restore original list item styling with borders */
+nav#flyout-menu li {
+    position: relative;
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Updated text alignment rules */
 nav#flyout-menu > ul > li > a {
     white-space: nowrap;
     display: flex !important;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 45px 15px 30px !important;
-    position: relative;
+    padding-right: 40px !important;
+}
+
+/* Submenu styling with proper transitions */
+nav#flyout-menu .submenu {
+    padding-left: 20px;
+    list-style: none;
+    margin-top: 8px;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+nav#flyout-menu .submenu.active {
+    max-height: 1000px; /* Adjust based on content */
 }
 
 nav#flyout-menu .submenu li {
-    padding: 0 !important; /* Reset submenu li padding */
+    border-bottom: none;
+    padding: 8px 0 !important;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
 }
 
-nav#flyout-menu .submenu li a {
-    white-space: nowrap;
-    padding: 8px 35px 8px 35px !important;
-    font-size: 0.9em;
-    display: flex !important;
-    align-items: center;
+nav#flyout-menu .submenu.active li {
+    opacity: 1;
+    transform: translateY(0);
 }
 
+/* Arrow styling with rotation fix */
 .submenu-arrow {
-    position: absolute !important;
-    right: 20px;
-    margin-left: 0 !important;
-    transform: none !important;
-    width: 16px;
-    height: 16px;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
 }
 
 .submenu-arrow.rotated {
     transform: rotate(180deg) !important;
 }
-
 
 .menu-close-btn {
     position: absolute;
@@ -884,11 +897,10 @@ footer a:hover {
     }
 
     nav#flyout-menu {
-        width: 200px; /* Original mobile width restored */
+        width: 200px;
     }
-    
-    nav#flyout-menu > ul > li > a {
-        padding: 12px 40px 12px 25px !important;
+    nav#flyout-menu li {
+        padding: 12px 25px;
     }
     
     .submenu-arrow {
