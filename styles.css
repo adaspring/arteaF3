@@ -521,6 +521,26 @@ h2 a:hover, h3 a:hover {
     contain: content; /* Limits browser recalc scope */
 }
 
+/* ================================================== */
+/* Content Sections - Text Justification */
+/* ================================================== */
+.subsection p,
+.sub-subsection p,
+.subsection .lecture-content p,
+.sub-subsection .hidden-content p {
+    text-align: justify;
+    hyphens: auto; /* For better word breaking */
+    -webkit-hyphens: auto; /* Safari support */
+    text-justify: inter-word;
+    margin-bottom: 1rem; /* Maintain vertical rhythm */
+}
+
+/* For headings alignment consistency */
+.subsection h3,
+.sub-subsection h4 {
+    text-align: left; /* Keep headings left-aligned */
+}
+
 /* h4 heading styles */
 h4 {
     color: #a3e0be !important; /* Needs !important */
