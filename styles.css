@@ -81,7 +81,7 @@ nav#flyout-menu {
     position: fixed;
     top: 0;
     right: 0;
-    width: 250px;
+    width: 280px;
     height: 100vh;
     background-color: #0d2a1c;
     transform: translateX(100%);
@@ -115,6 +115,20 @@ nav#flyout-menu.open {
 
 .menu-close-btn:hover {
     transform: rotate(90deg);
+}
+
+nav#flyout-menu > ul > li > a {
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 35px 15px 30px;
+}
+
+nav#flyout-menu .submenu li a {
+    white-space: nowrap;
+    padding: 8px 35px 8px 40px;
+    font-size: 0.95em;
 }
 
 nav#flyout-menu ul {
@@ -172,11 +186,9 @@ nav#flyout-menu .submenu.active li {
 }
 
 .submenu-arrow {
-    display: inline-block !important;
-    margin-left: 10px;
-    font-size: 0.7em;
-    transition: transform 0.3s ease;
-    pointer-events: auto;
+    position: static !important;
+    margin-left: 15px;
+    transform: none !important;
 }
 
 .submenu-arrow.rotated {
@@ -909,8 +921,12 @@ footer a:hover {
     }
 
     nav#flyout-menu {
-        width: 200px;
+        width: 240px;
     }
+    nav#flyout-menu > ul > li > a {
+        padding: 12px 30px 12px 25px;
+    }
+
 
     .grid-container {
         grid-template-columns: repeat(2, minmax(150px, 1fr));
