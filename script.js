@@ -386,6 +386,13 @@ function openLightbox(imgElement) {
     currentLightboxImages = Array.from(container.querySelectorAll('img'));
     currentLightboxIndex = currentLightboxImages.indexOf(imgElement);
     
+    // Add/remove single-image class based on number of images
+    if (currentLightboxImages.length === 1) {
+        lightbox.classList.add('single-image');
+    } else {
+        lightbox.classList.remove('single-image');
+    }
+    
     updateLightboxImage();
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
