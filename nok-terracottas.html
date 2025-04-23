@@ -444,50 +444,7 @@
 
     <footer>
         <a href="index.html">← Back to Main Gallery</a>
-    </footer>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    updateCarousel('nok-resources', 'init');
-  });
-
-  function updateCarousel(id, direction) {
-    const images = document.querySelector(`#items-${id}`);
-    if (!images) return;
-
-    let index = parseInt(images.getAttribute('data-index'));
-    const total = images.children.length;
-
-    if (direction === 'next') {
-      index = (index + 1) % total;
-    } else if (direction === 'prev') {
-      index = (index - 1 + total) % total;
-    } else if (direction === 'init') {
-      index = 0;
-    }
-
-    images.setAttribute('data-index', index);
-
-    // Toggle images
-    Array.from(images.children).forEach((img, i) => {
-      img.style.display = i === index ? 'block' : 'none';
-    });
-
-    // Toggle descriptions
-    const descriptions = document.querySelectorAll(`#nok-description p`);
-    descriptions.forEach((desc, i) => {
-      desc.style.display = i === index ? 'block' : 'none';
-    });
-  }
-</script>
-    
-    <style>
-#items-nok-resources img {
-  display: none;
-}
-#items-nok-resources img:first-child {
-  display: block;
-}
-</style>
+    </footer> 
     
     <script src="script.js"></script>
 </body>
