@@ -412,84 +412,21 @@
 <p>After decades of limited research following the foundational work of Bernard Fagg in the mid-20th century, Professor Breunig and his team initiated a new era of scientific investigation in 2005. His long-term archaeological project, conducted in close collaboration with Nigerian institutions, has transformed our understanding of Nok culture. Unlike earlier studies that relied heavily on looted artifacts and surface finds, Breunig's work emphasizes contextual excavation, radiocarbon dating, and interdisciplinary analysis, placing Nok culture within a broader narrative of African prehistory. What makes this lecture even more compelling is that Professor Breunig is not just a researcher—he is a leading voice and pioneer in the field, whose meticulous methods have become the gold standard for Nok archaeology. His establishment of a research station, his training of local archaeologists, and his efforts to document and protect fragile archaeological sites demonstrate a model of cultural stewardship and international cooperation.</p>  
     </div>
 </div>
-
 </div>   
 
 <div class="subsection">
-    <h3>Explore Resources on Nok Terracottas</h3>
-    <div class="carousel">
-        <button onclick="updateCarousel('nok-resources', 'prev')" 
-                aria-label="Previous image">←</button>
-        <div class="carousel-images" id="items-nok-resources" data-index="0">
+  <h3>Nok Terracotta Highlights</h3>
+  <div class="carousel" id="nok-highlight-carousel">
+    <button onclick="cycleHighlight('prev')" aria-label="Previous image">←</button>
 
-<img
-  loading="lazy"
-  src="https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-3_vtbj8q.jpg?w=800&f_auto,q_auto,dpr_auto"
-  srcset="
-    https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-3_vtbj8q.jpg?w=400&f_auto,q_auto,dpr_auto 400w,
-    https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-3_vtbj8q.jpg?w=800&f_auto,q_auto,dpr_auto 800w,
-    https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-3_vtbj8q.jpg?w=1200&f_auto,q_auto,dpr_auto 1200w
-    "
-  sizes="(max-width: 768px) 90vw, 50vw"
-  alt="Nok terracotta man head with beard"
-  width="800"
-  height="600"
-  style="aspect-ratio: 4/3"
->   
-               
-                <img
-  loading="lazy"
-  src="https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-4_zmxn6i.jpg?w=800&f_auto,q_auto,dpr_auto"
-  srcset="
-    https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-4_zmxn6i.jpg?w=400&f_auto,q_auto,dpr_auto 400w,
-    https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-4_zmxn6i.jpg?w=800&f_auto,q_auto,dpr_auto 800w,
-    https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-4_zmxn6i.jpg?w=1200&f_auto,q_auto,dpr_auto 1200w
-    "
-  sizes="(max-width: 768px) 90vw, 50vw"
-  alt="Nok terracotta man back head"
-  width="800"
-  height="600"
-  style="aspect-ratio: 4/3"
->   
-                
-                <img
-  loading="lazy"
-  src="https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-1_ek79ii.jpg?w=800&f_auto,q_auto,dpr_auto"
-  srcset="
-    https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-1_ek79ii.jpg?w=400&f_auto,q_auto,dpr_auto 400w,
-    https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-1_ek79ii.jpg?w=800&f_auto,q_auto,dpr_auto 800w,
-    https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-1_ek79ii.jpg?w=1200&f_auto,q_auto,dpr_auto 1200w
-    "
-  sizes="(max-width: 768px) 90vw, 50vw"
-  alt="Nok terracotta man head"
-  width="800"
-  height="600"
-  style="aspect-ratio: 4/3"
->   
-
-
-
-
-
-
-
-            
-        </div>
-        <button onclick="updateCarousel('nok-resources', 'next')" 
-                aria-label="Next image">→</button>
+    <div class="carousel-slide">
+      <img id="highlight-img" src="" alt="Nok terracotta image" width="800" height="600" style="aspect-ratio: 4/3">
+      <p id="highlight-desc" class="category-description"></p>
     </div>
-    <div id="nok-description" class="category-description">
-        <p data-index="0" style="display: block;">
-            Metropolitan Museum of Art description...
-        </p>
-        <p data-index="1" style="display: none;">
-            Yale Art Gallery description...
-        </p>
-        <p data-index="2" style="display: none;">
-            Trafficking Culture description...
-        </p>
-    </div>
-</div>
+
+    <button onclick="cycleHighlight('next')" aria-label="Next image">→</button>
+  </div>
+</div>   
 </section>
 
     </main>
@@ -497,7 +434,101 @@
     <footer>
         <a href="index.html">← Back to Main Gallery</a>
     </footer> 
+
+<style>
+#nok-highlight-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+#nok-highlight-carousel button {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #a3e0be;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#nok-highlight-carousel button:hover {
+  transform: scale(1.1);
+}
+
+#nok-highlight-carousel .carousel-slide {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#highlight-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+#highlight-desc {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #ccc;
+  padding: 0 1rem;
+  line-height: 1.6;
+}
+
+ </style>
+
+
+
+
+
+
     
     <script src="script.js"></script>
+    <script>
+  const highlights = [
+    {
+      img: "https://res.cloudinary.com/dc0pgvkii/image/upload/large-man-bust-4_xbm3sy.jpg",
+      desc: "This Nok bust shows elongated features typical of the style. Likely used for ritual or ancestor veneration."
+    },
+    {
+      img: "https://res.cloudinary.com/dc0pgvkii/image/upload/short-man-bust-5_wu2emc.jpg",
+      desc: "A rare hat adorns this bust, hinting at hierarchical roles within Nok society."
+    },
+    {
+      img: "https://res.cloudinary.com/dc0pgvkii/image/upload/man-head-1_ek79ii.jpg",
+      desc: "Minimalist styling with expressive eyes — a hallmark of Nok abstraction."
+    }
+  ];
+
+  let currentHighlightIndex = 0;
+
+  function renderHighlight(index) {
+    const image = document.getElementById("highlight-img");
+    const desc = document.getElementById("highlight-desc");
+
+    image.src = highlights[index].img;
+    desc.innerText = highlights[index].desc;
+  }
+
+  function cycleHighlight(direction) {
+    if (direction === 'next') {
+      currentHighlightIndex = (currentHighlightIndex + 1) % highlights.length;
+    } else {
+      currentHighlightIndex = (currentHighlightIndex - 1 + highlights.length) % highlights.length;
+    }
+    renderHighlight(currentHighlightIndex);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderHighlight(currentHighlightIndex);
+  });
+    </script>
 </body>
 </html>
