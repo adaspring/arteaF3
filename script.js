@@ -274,6 +274,14 @@ function updateCarousel(id, direction) {
         const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
         if (indicators[currentIndex]) indicators[currentIndex].classList.add('active');
     }
+
+    // Special handling for resources carousel text
+    if (id === 'nok-resources') {
+        const descriptions = document.querySelectorAll('#nok-description p');
+        descriptions.forEach((desc, i) => {
+            desc.style.display = i === currentIndex ? 'block' : 'none';
+        });
+    }
 }
 
 function goToSlide(id, index) {
@@ -297,6 +305,14 @@ function goToSlide(id, index) {
     if (indicatorsContainer) {
         const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
         if (indicators[index]) indicators[index].classList.add('active');
+    }
+
+    // Special handling for resources carousel text
+    if (id === 'nok-resources') {
+        const descriptions = document.querySelectorAll('#nok-description p');
+        descriptions.forEach((desc, i) => {
+            desc.style.display = i === index ? 'block' : 'none';
+        });
     }
 }
 
@@ -462,6 +478,7 @@ function initLoadingStates() {
 // Initialization
 // ======================
 document.addEventListener('DOMContentLoaded', () => {
+    // Existing initializations
     initSubmenus();
     setActivePage();
     initCarousels();
@@ -469,5 +486,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initLightbox();
     addTouchSupport();
     initLoadingStates();
-    setupIndependentScrolling(); // Add this new initialization
+    setupIndependentScrolling();
+
+    // Initialize resources carousel descriptions
+    const resourcesCarousel = document.getElementById('items-nok-resources');
+    if (resourcesCarousel) {
+        const initialIndex = parseInt(resourcesCarousel.dataset.index || 0);
+        document.querySelectorAll('#nok-description p').forEach((p, i) => {
+            p.style.display = i === initialIndex ? 'block' : 'none';
+        });
+    }
 });
