@@ -414,19 +414,20 @@
 </div>
 </div>   
 
+<!-- Updated Nok Highlights Carousel -->
 <div class="subsection">
   <h3>Nok Terracotta Highlights</h3>
-  <div class="carousel" id="nok-highlight-carousel">
-    <button onclick="cycleHighlight('prev')" aria-label="Previous image">←</button>
-
-    <div class="carousel-slide">
-      <img id="highlight-img" src="" alt="Nok terracotta image" width="800" height="600" style="aspect-ratio: 4/3">
-      <p id="highlight-desc" class="category-description"></p>
+  <div class="grid-carousel" id="nok-highlight-carousel">
+    <button class="carousel-nav prev" onclick="cycleHighlight('prev')" aria-label="Previous image">←</button>
+    
+    <div class="carousel-slide grid-item">
+      <img class="grid-image" id="highlight-img" src="" alt="Nok terracotta highlight">
+      <p class="grid-caption" id="highlight-desc"></p>
     </div>
 
-    <button onclick="cycleHighlight('next')" aria-label="Next image">→</button>
+    <button class="carousel-nav next" onclick="cycleHighlight('next')" aria-label="Next image">→</button>
   </div>
-</div>   
+</div>
 </section>
 
     </main>
@@ -435,59 +436,7 @@
         <a href="index.html">← Back to Main Gallery</a>
     </footer> 
 
-<style>
-#nok-highlight-carousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-  padding: 1rem 0;
-}
 
-#nok-highlight-carousel button {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: #a3e0be;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-#nok-highlight-carousel button:hover {
-  transform: scale(1.1);
-}
-
-#nok-highlight-carousel .carousel-slide {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-#highlight-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-}
-
-#highlight-desc {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  font-style: italic;
-  color: #ccc;
-  padding: 0 1rem;
-  line-height: 1.6;
-  min-height: 4.5rem; /* Adjust this based on your longest text */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: justify;
-}
-
- </style>
 
 
 
