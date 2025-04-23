@@ -476,6 +476,76 @@ h4::before {
     object-position: center top;
 }
 
+/* 5.8 Grid-Style Carousel */
+.grid-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+}
+
+.grid-carousel .grid-item {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease;
+}
+
+.grid-carousel .grid-image {
+    border-radius: 8px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(163, 224, 190, 0.15);
+}
+
+.grid-carousel .grid-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,20,0,0.9) 60%, transparent);
+    color: #fff;
+    padding: 1.5rem 1rem 1rem;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.grid-carousel .grid-item:hover .grid-caption {
+    opacity: 1;
+}
+
+.carousel-nav {
+    background: transparent;
+    border: none;
+    color: #a3e0be;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-nav:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+}
+
+
+
+
+
 
 /* 6. Grid System */
 /* ================================================== */
@@ -959,8 +1029,28 @@ footer a:hover {
     #highlight-img {
         aspect-ratio: 3/4;
     }  
-
+    
+    .grid-carousel {
+        gap: 1rem;
+        padding: 0 5%;
+    }
+    
+    .grid-carousel .grid-item {
+        max-width: 300px;
+    }
+    
+    .grid-carousel .grid-caption {
+        font-size: 0.8rem;
+        padding: 1rem 0.75rem;
+    }
 }
+
+
+
+
+
+
+
 
 
 @media (max-width: 480px) {
