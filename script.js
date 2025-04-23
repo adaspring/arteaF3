@@ -384,15 +384,11 @@ function openLightbox(imgElement) {
     const lightbox = document.getElementById('lightbox');
     const container = imgElement.closest('.carousel-images, .grid-container');
     currentLightboxImages = Array.from(container.querySelectorAll('img'));
+    
+    // Single image detection
+    lightbox.classList.toggle('single-image', currentLightboxImages.length === 1);
+    
     currentLightboxIndex = currentLightboxImages.indexOf(imgElement);
-    
-    // Add/remove single-image class based on number of images
-    if (currentLightboxImages.length === 1) {
-        lightbox.classList.add('single-image');
-    } else {
-        lightbox.classList.remove('single-image');
-    }
-    
     updateLightboxImage();
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
