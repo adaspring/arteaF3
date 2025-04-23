@@ -435,6 +435,48 @@ h4::before {
     transform: scale(1.2);
 }
 
+/* Nok Highlights Carousel Styling */
+#nok-highlight-carousel .carousel-slide {
+    perspective: 1000px;
+}
+
+#highlight-img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: cover;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(163, 224, 190, 0.15);
+}
+
+#highlight-img:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+#nok-highlight-carousel .carousel-slide {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+}
+
+#nok-highlight-carousel button {
+    color: #a3e0be;
+    padding: 10px;
+    margin: 0 10px;
+}
+
+#nok-highlight-carousel button:hover {
+    color: #fff;
+}
+
+/* Match grid aspect ratio */
+#highlight-img {
+    aspect-ratio: 1;
+    object-position: center top;
+}
+
+
 /* 6. Grid System */
 /* ================================================== */
 .grid-container {
@@ -909,6 +951,14 @@ footer a:hover {
         font-size: 0.85rem;
         padding: 10px 15px;
       }
+
+    #nok-highlight-carousel .carousel-slide {
+        max-width: 300px;
+    }
+    
+    #highlight-img {
+        aspect-ratio: 3/4;
+    }  
 
 }
 
