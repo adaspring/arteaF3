@@ -517,23 +517,45 @@ h4::before {
     opacity: 0.85;
 }
 
-/* Specific grid styling for single images */
-.grid-container.single-image {
+
+/* Two image templates */
+/* Template 1: Large Centered Image */
+.grid-container.image-large {
     grid-template-columns: 1fr;
-    max-width: 600px;
-    margin: 1rem auto;
+    max-width: 800px;
+    margin: 2rem auto;
 }
 
-.grid-container.single-image .grid-item {
+.grid-container.image-large .grid-item {
     aspect-ratio: unset;
-    max-height: 70vh;
+    max-height: 80vh;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* Lightbox modification for single images */
-#lightbox.single-image .lightbox-nav {
-    display: none;
+/* Template 2: Smaller Inline Image */
+.grid-container.image-inline {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 1rem 0;
+    float: left; /* or right */
+    shape-outside: margin-box;
+    padding: 0 1.5rem 1rem 0;
 }
 
+.grid-container.image-inline .grid-item {
+    aspect-ratio: unset;
+    max-height: 50vh;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Right-aligned alternative */
+.grid-container.image-inline.right {
+    float: right;
+    padding: 0 0 1rem 1.5rem;
+}
+
+/* Lightbox modification for single images remains same */
+#lightbox.single-image .lightbox-nav { display: none; }
 
 /* 7. Content Sections */
 /* ================================================== */
