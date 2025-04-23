@@ -517,6 +517,24 @@ h4::before {
     opacity: 0.85;
 }
 
+/* Specific grid styling for single images */
+.grid-container.single-image {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 1rem auto;
+}
+
+.grid-container.single-image .grid-item {
+    aspect-ratio: unset;
+    max-height: 70vh;
+}
+
+/* Lightbox modification for single images */
+#lightbox.single-image .lightbox-nav {
+    display: none;
+}
+
+
 /* 7. Content Sections */
 /* ================================================== */
 .content-section {
