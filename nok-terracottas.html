@@ -480,6 +480,11 @@
   color: #ccc;
   padding: 0 1rem;
   line-height: 1.6;
+  min-height: 4.5rem; /* Adjust this based on your longest text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
 }
 
  </style>
@@ -510,11 +515,21 @@
   let currentHighlightIndex = 0;
 
   function renderHighlight(index) {
-    const image = document.getElementById("highlight-img");
-    const desc = document.getElementById("highlight-desc");
+  const image = document.getElementById("highlight-img");
+  const desc = document.getElementById("highlight-desc");
 
-    image.src = highlights[index].img;
-    desc.innerText = highlights[index].desc;
+  const current = highlights[index];
+
+  image.src = current.img;
+  image.srcset = `
+    ${current.img}?w=400&f_auto,q_auto,dpr_auto 400w,
+    ${current.img}?w=800&f_auto,q_auto,dpr_auto 800w,
+    ${current.img}?w=1200&f_auto,q_auto,dpr_auto 1200w
+    `;
+  image.sizes = "(max-width: 768px) 90vw, 50vw";
+  image.loading = "lazy";
+  image.alt = current.alt || "Nok terracotta image";
+  desc.innerText = current.desc;
   }
 
   function cycleHighlight(direction) {
