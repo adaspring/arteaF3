@@ -16,8 +16,39 @@ body {
     background-color: #1a4731;
     color: #f5f5f5;
     font-family: 'Georgia', serif;
-    line-height: 1.6;
+    line-height: 1.7;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    text-justify: inter-word
 }
+
+/* Ensure paragraph elements maintain the style */
+
+/* Style for all content areas */
+.content-section p,
+.subsection p,
+.sub-subsection p,
+.hidden-content p,
+.lecture-content p,
+.lecture-content li {
+    font-style: italic;
+    text-align: justify;
+}
+.category-description {
+    font-style: italic;
+    text-align: justify;
+}
+
+
+
+
+
+
+
+
+
+
 
 body.menu-open::after {
     content: '';
