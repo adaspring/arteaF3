@@ -37,6 +37,9 @@ a {
     transition: color 0.2s ease;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+
 /* Add/modify these rules in your existing CSS */
 .category-description {
     font-size: 0.9rem; /* Smaller text size */
@@ -1016,3 +1019,81 @@ footer a:hover {
     }
 }
 
+
+/* Enhanced styling for About Artifacts section */
+#about-artifacts {
+    font-family: 'Playfair Display', 'Georgia', serif; /* More elegant serif font */
+    line-height: 1.8;
+}
+
+#about-artifacts h2 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    text-transform: none; /* Override uppercase */
+    border-bottom: 3px double rgba(163, 224, 190, 0.4) !important;
+    padding-bottom: 0.5rem !important;
+    margin-bottom: 2rem;
+}
+
+#about-artifacts h3 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+
+#about-artifacts h4 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: rgba(163, 224, 190, 0.9) !important;
+}
+
+#about-artifacts p {
+    font-size: 1.05rem;
+    text-align: justify;
+    margin-bottom: 1.3rem;
+    color: #f0f0f0;
+}
+
+/* Add slight texture to the background */
+#about-artifacts .subsection {
+    background: rgba(0, 0, 0, 0.15);
+    border-left: 3px solid rgba(163, 224, 190, 0.3);
+    padding: 1.8rem;
+}
+
+#about-artifacts .sub-subsection {
+    background: rgba(0, 0, 0, 0.12);
+    border-left: 2px solid rgba(163, 224, 190, 0.2);
+    padding: 1.5rem;
+    margin-top: 1.8rem;
+}
+
+/* Style the Read More buttons */
+#about-artifacts .read-more {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+    #about-artifacts h2 {
+        font-size: 1.8rem;
+    }
+    
+    #about-artifacts h3 {
+        font-size: 1.4rem;
+    }
+    
+    #about-artifacts h4 {
+        font-size: 1.15rem;
+    }
+    
+    #about-artifacts p {
+        font-size: 1rem;
+    }
+}
