@@ -446,35 +446,41 @@
         <a href="index.html">← Back to Main Gallery</a>
     </footer>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  updateCarousel('nok-resources', 'init');
-});
+  document.addEventListener('DOMContentLoaded', function () {
+    updateCarousel('nok-resources', 'init');
+  });
 
-function updateCarousel(id, direction) {
-  const images = document.querySelector(`#items-${id}`);
-  let index = parseInt(images.getAttribute('data-index'));
-  const total = images.children.length;
+  function updateCarousel(id, direction) {
+    const images = document.querySelector(`#items-${id}`);
+    if (!images) return;
 
-  if (direction === 'next') {
-    index = (index + 1) % total;
-  } else if (direction === 'prev') {
-    index = (index - 1 + total) % total;
-  } else if (direction === 'init') {
-    index = 0;
+    let index = parseInt(images.getAttribute('data-index'));
+    const total = images.children.length;
+
+    if (direction === 'next') {
+      index = (index + 1) % total;
+    } else if (direction === 'prev') {
+      index = (index - 1 + total) % total;
+    } else if (direction === 'init') {
+      index = 0;
+    }
+
+    images.setAttribute('data-index', index);
+
+    // Toggle images
+    Array.from(images.children).forEach((img, i) => {
+      img.style.display = i === index ? 'block' : 'none';
+    });
+
+    // Toggle descriptions
+    const descriptions = document.querySelectorAll(`#nok-description p`);
+    descriptions.forEach((desc, i) => {
+      desc.style.display = i === index ? 'block' : 'none';
+    });
   }
-
-  images.setAttribute('data-index', index);
-
-  Array.from(images.children).forEach((img, i) => {
-    img.style.display = i === index ? 'block' : 'none';
-  });
-
-  const descriptions = document.querySelectorAll(`#nok-description p`);
-  descriptions.forEach((desc, i) => {
-    desc.style.display = i === index ? 'block' : 'none';
-  });
-}
-</script><style>
+</script>
+    
+    <style>
 #items-nok-resources img {
   display: none;
 }
