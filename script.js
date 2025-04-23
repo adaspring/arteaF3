@@ -403,7 +403,14 @@ function updateLightboxImage() {
     
     lightboxImg.src = currentImg.src;
     lightboxImg.alt = currentImg.alt;
-    lightboxCaption.textContent = currentImg.alt;
+
+    // Special case: Only create link if data attribute exists
+    if(currentImg.dataset.externalUrl) {
+        lightboxCaption.innerHTML = `<a href="${currentImg.dataset.externalUrl}" target="_blank" rel="noopener">${currentImg.dataset.caption || currentImg.alt}</a>`;
+    } else {
+        // Default behavior: Use original textContent approach
+        lightboxCaption.textContent = currentImg.alt;
+    }
 }
 
 function showNextImage() {
@@ -415,6 +422,8 @@ function showPrevImage() {
     currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
     updateLightboxImage();
 }
+
+
 
 // ======================
 // Touch Support
