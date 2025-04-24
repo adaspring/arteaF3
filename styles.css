@@ -638,82 +638,54 @@ h4::before {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Video section unified styling */
-.video-container > *:not(.video-wrapper) {
-    font-size: 0.85em;
-    color: rgba(163, 224, 190, 0.8);
-    line-height: 1.4;
-    margin: 0.5rem 0;
-}
 
-/* Link formatting */
-.video-container a,
-.video-meta a,
-.credit a {
-    color: inherit;
-    text-decoration: none !important;
-    border-bottom: 1px solid rgba(163, 224, 190, 0.3);
-    transition: border-color 0.2s ease;
-}
 
-.video-container a:hover,
-.video-meta a:hover,
-.credit a:hover {
-    border-bottom-color: currentColor;
-}
+/* Unified text formatting */
+   .video-meta,
+   .credit,
+   .sub-subsection {
+       font-size: 0.9rem;
+       font-style: italic;
+       line-height: 1.7;
+       margin: 15px auto 0;
+       padding: 0 20px;
+       text-align: justify;
+       hyphens: auto;
+       -webkit-hyphens: auto;
+       color: #a3e0be;
+       opacity: 0.9;
+   }
 
-/* Compact layout adjustments */
-.video-meta {
-    display: flex;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-    align-items: baseline;
-    margin: 0.8rem 0;
-}
+   /* Link styling */
+   .video-meta a,
+   .credit a,
+   .sub-subsection a {
+       color: inherit !important;
+       text-decoration: none !important;
+       border-bottom: 1px solid rgba(163, 224, 190, 0.3);
+       transition: border-color 0.2s ease;
+   }
 
-.credit {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    align-items: center;
-    margin-top: 0.5rem;
-}
+   .video-meta a:hover,
+   .credit a:hover,
+   .sub-subsection a:hover {
+       border-bottom-color: currentColor;
+   }
 
-/* Speaker info formatting */
-.credit strong {
-    font-weight: 500;
-    color: #a3e0be;
-}
+   /* Compact layout */
+   .video-meta {
+       display: flex;
+       justify-content: space-between;
+       flex-wrap: wrap;
+       gap: 0.8rem;
+   }
 
-/* Remove extra margins */
-.video-container h4,
-.video-container p {
-    margin: 0.3rem 0;
-}
-
-/* List formatting */
-.lecture-content {
-    padding-left: 1.2rem;
-}
-
-.lecture-content li {
-    margin: 0.4rem 0;
-    padding: 0.2rem 0;
-}
-
-.lecture-content p {
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    color: #e0e0e0;
-}
-
-.lead {
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: #ffffff;
-    opacity: 0.9;
-    margin-bottom: 2rem;
-}
+   .credit {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 0.5rem;
+       align-items: baseline;
+   }
 
 .hidden-content {
     display: none;
