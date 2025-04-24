@@ -638,58 +638,67 @@ h4::before {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Video meta styling */
-.video-meta {
+/* Video section unified styling */
+.video-container > *:not(.video-wrapper) {
     font-size: 0.85em;
-    margin: 0.5rem 0;
-    color: #a3e0be;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    color: rgba(163, 224, 190, 0.8);
     line-height: 1.4;
+    margin: 0.5rem 0;
 }
 
-/* Duration text */
-.video-meta .duration {
-    opacity: 0.9;
-    white-space: nowrap;
-}
-
-/* Source link */
-.video-meta .source a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(163, 224, 190, 0.3);
-}
-
-/* Credit section */
-.credit {
-    font-size: 0.8em;
-    color: rgba(163, 224, 190, 0.7);
-    margin-top: 0.8rem;
-    line-height: 1.5;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-/* Affiliation link */
+/* Link formatting */
+.video-container a,
+.video-meta a,
 .credit a {
     color: inherit;
-    opacity: 0.9;
-    text-decoration: none;
-    border-bottom: 1px dotted rgba(163, 224, 190, 0.3);
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(163, 224, 190, 0.3);
+    transition: border-color 0.2s ease;
 }
 
-/* Hover states */
-.video-meta .source a:hover,
+.video-container a:hover,
+.video-meta a:hover,
 .credit a:hover {
-    opacity: 1;
-    border-color: currentColor;
+    border-bottom-color: currentColor;
 }
 
+/* Compact layout adjustments */
+.video-meta {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+    margin: 0.8rem 0;
+}
+
+.credit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+/* Speaker info formatting */
+.credit strong {
+    font-weight: 500;
+    color: #a3e0be;
+}
+
+/* Remove extra margins */
+.video-container h4,
+.video-container p {
+    margin: 0.3rem 0;
+}
+
+/* List formatting */
+.lecture-content {
+    padding-left: 1.2rem;
+}
+
+.lecture-content li {
+    margin: 0.4rem 0;
+    padding: 0.2rem 0;
 }
 
 .lecture-content p {
