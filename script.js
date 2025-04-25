@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         .theme-label {
-            font-size: 0.75rem;
+            font-size: 0.5rem;
             color: #665544;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             letter-spacing: 0.5px;
