@@ -600,11 +600,29 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
     document.body.appendChild(toggleContainer);
     
-    // Check for saved user preference
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme === 'dark') {
+    
+    
+    // Check for saved user preference first
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+} else if (currentTheme === 'light') {
+    // Light theme already applied by default
+} else {
+    // No saved preference, check system preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        // System doesn't specify or prefers light - SET YOUR DEFAULT HERE
+        // For dark default:
+        document.body.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark');
+        
+        // For light default (remove the above 2 lines and uncomment these):
+        // localStorage.setItem('theme', 'light');
     }
+}
     
     // Handle theme toggle
     toggleButton.addEventListener('click', function() {
