@@ -686,7 +686,10 @@ h4::before {
 }
 
 .hidden-content p:first-of-type {
-    margin-top: -0.5rem; /* or 0 to remove entirely */
+    margin-top: 0rem; /* or 0 to remove entirely */
+}
+.subsection p:has(+ .hidden-content) {
+    margin-bottom: 0;
 }
 
 .read-more {
