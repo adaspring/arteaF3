@@ -486,8 +486,20 @@ function initLoadingStates() {
     });
 }
 
+
+
 // Theme Toggle Functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Create theme toggle container
+    const toggleContainer = document.createElement('div');
+    toggleContainer.id = 'theme-toggle-container';
+    toggleContainer.classList.add('theme-toggle-container');
+    
+    // Create theme label
+    const themeLabel = document.createElement('div');
+    themeLabel.classList.add('theme-label');
+    themeLabel.textContent = 'dark | light';
+    
     // Create theme toggle button
     const toggleButton = document.createElement('button');
     toggleButton.id = 'theme-toggle';
@@ -495,14 +507,38 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButton.innerHTML = '🌓'; // Moon/sun icon
     toggleButton.setAttribute('aria-label', 'Toggle dark mode');
     
+    // Add elements to container
+    toggleContainer.appendChild(themeLabel);
+    toggleContainer.appendChild(toggleButton);
+    
     // Add toggle button style
     const style = document.createElement('style');
     style.textContent = `
-        .theme-toggle {
+        .theme-toggle-container {
             position: fixed;
             top: 20px;
             right: 80px;
             z-index: 101;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .theme-label {
+            font-size: 0.75rem;
+            color: #665544;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+        
+        body.dark-theme .theme-label {
+            color: #CCD5AE;
+        }
+        
+        .theme-toggle {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -529,26 +565,40 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         @media (max-width: 768px) {
-            .theme-toggle {
+            .theme-toggle-container {
                 right: 70px;
+            }
+            
+            .theme-toggle {
                 width: 35px;
                 height: 35px;
                 font-size: 1.3rem;
             }
+            
+            .theme-label {
+                font-size: 0.7rem;
+            }
         }
         
         @media (max-width: 480px) {
-            .theme-toggle {
+            .theme-toggle-container {
                 right: 60px;
+            }
+            
+            .theme-toggle {
                 width: 30px;
                 height: 30px;
                 font-size: 1.1rem;
+            }
+            
+            .theme-label {
+                font-size: 0.65rem;
             }
         }
     `;
     
     document.head.appendChild(style);
-    document.body.appendChild(toggleButton);
+    document.body.appendChild(toggleContainer);
     
     // Check for saved user preference
     const currentTheme = localStorage.getItem('theme');
@@ -588,6 +638,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
