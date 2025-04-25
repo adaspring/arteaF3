@@ -691,7 +691,7 @@ h4::before {
     color: #a3e0be;
     cursor: pointer;
     padding: 0.25em 0.5em;
-    margin-left: 0.5em;
+    margin-left: 0.2em;
     font-family: 'Georgia', serif;
     font-size: 0.9em;
     transition: all 0.3s ease;
@@ -704,17 +704,7 @@ h4::before {
     text-decoration: underline;
 }
 
-.read-more:focus {
-    outline: 1px dotted #a3e0be;
-}
 
-.read-more[aria-expanded="true"]::after {
-    content: " ▲";
-}
-
-.read-more[aria-expanded="false"]::after {
-    content: " ▼";
-}
 
 
 /* ================================================== */
