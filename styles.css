@@ -557,160 +557,89 @@ h4::before {
 /* Lightbox modification for single images remains same */
 #lightbox.single-image .lightbox-nav { display: none; }
 
-/* 7. Content Sections */
-/* ================================================== */
+
+/* Modify existing content-section styles */
 .content-section {
-    margin: 40px auto;
-    max-width: 800px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    color: #f5f5f5;
+    background-color: rgba(0, 0, 0, 0.15); /* Slightly lighter background */
+    padding: 30px 40px; /* More breathing room */
+    line-height: 1.7; /* Better vertical rhythm */
+    max-width: 780px; /* Optimal reading width */
 }
 
 .subsection {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 1000px;
+    padding: 2rem;
     margin-bottom: 2.5rem;
-    padding: 1.5rem;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.03); /* Subtle contrast */
+    border-left: 3px solid #a3e0be; /* Accent border */
 }
 
-.sub-subsection {
-    margin: 1.5rem 0;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
-    contain: content;
-}
-
-.subsection p,
-.sub-subsection p,
-.subsection .lecture-content p,
-.sub-subsection .hidden-content p {
-    text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    text-justify: inter-word;
-    margin-bottom: 1rem;
-}
-
-.subsection h3,
-.sub-subsection h4 {
-    text-align: left;
-}
-
-.category-description {
-    font-size: 0.9rem;
-    text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    text-justify: inter-word;
-    padding: 12px 20px;
-    line-height: 1.5;
-    margin: 15px auto 0;
-    max-width: 95%;
-}
-
-.category-description {
-    margin-top: 20px;
-    font-style: italic;
-    color: #ccc;
-    padding: 0 20px;
-    line-height: 1.7;
-}
-
-.video-container {
-    margin: 2rem 0;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    background: #000;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.video-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-    font-size: 0.9em;
-    color: #a3e0be;
-}
-
-.credit {
-    font-style: italic;
-    color: rgba(163, 224, 190, 0.7);
-    margin-top: 1rem;
-    font-size: 0.95em;
-}
-
-.lecture-content p {
-    line-height: 1.7;
+/* Improve typography */
+.subsection p {
+    font-size: 1.1rem;
+    text-align: left; /* Instead of justified */
+    hyphens: none;
     margin-bottom: 1.5rem;
-    color: #e0e0e0;
+    color: #e8e8e8; /* Softer white */
+    max-width: 65ch; /* Optimal line length */
 }
 
-.lead {
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: #ffffff;
-    opacity: 0.9;
-    margin-bottom: 2rem;
+.subsection h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    padding-left: 0;
+    border-bottom: 1px solid rgba(163, 224, 190, 0.2);
+    padding-bottom: 0.5rem;
 }
 
-.hidden-content {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    max-height: 0;
-    overflow: hidden;
+.subsection h4::before {
+    content: none; /* Remove bullet */
 }
 
-.hidden-content.visible {
-    display: block;
-    opacity: 1;
-    max-height: 1000vh;
-}
-
+/* Enhance read-more buttons */
 .read-more {
-    background: transparent;
-    border: none;
-    color: #a3e0be;
-    cursor: pointer;
-    padding: 0.25em 0.5em;
-    margin-left: 0.5em;
-    font-family: 'Georgia', serif;
-    font-size: 0.9em;
-    transition: all 0.3s ease;
-    position: relative;
+    background: rgba(163, 224, 190, 0.1);
+    border: 1px solid #a3e0be;
+    border-radius: 3px;
+    padding: 0.4rem 0.8rem;
+    margin: 0.5rem 0;
     display: inline-block;
+    transition: all 0.3s ease;
 }
 
 .read-more:hover {
-    color: #fff;
-    text-decoration: underline;
+    background: rgba(163, 224, 190, 0.2);
+    text-decoration: none;
 }
 
-.read-more:focus {
-    outline: 1px dotted #a3e0be;
+/* Improve hidden content transitions */
+.hidden-content {
+    padding-top: 1rem;
+    transition: opacity 0.4s ease, max-height 0.6s ease;
 }
 
-.read-more[aria-expanded="true"]::after {
-    content: " ▲";
+.hidden-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    position: relative;
 }
 
-.read-more[aria-expanded="false"]::after {
-    content: " ▼";
+.hidden-content p::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #a3e0be;
+    opacity: 0.6;
 }
+
+/* Add section hierarchy */
+#about-bronzes > h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #a3e0be;
+}
+
 
 
 /* ================================================== */
@@ -1000,7 +929,27 @@ footer a:hover {
         aspect-ratio: 3/4;
     }  
 
+.content-section {
+        padding: 20px;
+        margin: 30px 15px;
+    }
+    
+    .subsection {
+        padding: 1.5rem;
+    }
+    
+    .subsection p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
 }
+
+
+
+
+
+
 
 
 @media (max-width: 480px) {
