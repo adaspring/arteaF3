@@ -594,6 +594,10 @@ h4::before {
     -webkit-hyphens: auto;
     text-justify: inter-word;
     margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.0;
+    color: #e8e8e8;
 }
 
 .subsection h3,
