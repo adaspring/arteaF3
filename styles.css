@@ -501,8 +501,7 @@ h4::before {
   scroll-margin-inline: 20px;
 }
 
-/* Dark mode styles */
-body.dark-mode .carousel-thumbnails img.active-thumb {
+body.dark-theme .carousel-thumbnails img.active-thumb {
   border-color: #665544; /* Dark theme border color */
 }
 
