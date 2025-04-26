@@ -530,31 +530,27 @@ h4::before {
 
 /* Template 2: Inline Image */
 .grid-container.image-inline {
-    max-width: 200px; /* Reduce further */
+    max-width: 180px;
     float: left;
-    margin: 0 1rem 0.5rem 0; /* Tighter margins */
-    shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Sharp edges */
-    shape-margin: 0.8rem; /* Reduce spacing */
+    margin: 0.5rem 0.8rem 0.5rem 0; /* Top/Right/Bottom/Left */
+    shape-outside: margin-box;
+    shape-margin: 0.5rem;
     padding: 0;
 }
 
-.grid-container.image-inline.right {
-    float: right;
-    margin: 0 0 0.5rem 1rem; /* Mirror margins */
-    shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
-}
-
 .grid-container.image-inline .grid-item {
-    aspect-ratio: 2/3; /* Taller/narrower ratio */
-    max-height: 30vh; /* Smaller vertical space */
+    aspect-ratio: 3/4;
+    max-height: 25vh; /* Shorter height */
 }
 
 .grid-container.image-inline img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top; /* Focus on key image area */
+    object-position: center 25%; /* Focus on figure's upper body */
 }
+
+
 /* Lightbox modification for single images remains same */
 #lightbox.single-image .lightbox-nav { display: none; }
 
