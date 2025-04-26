@@ -306,7 +306,14 @@ function goToSlide(id, index) {
         const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
         if (indicators[index]) indicators[index].classList.add('active');
     }
-
+// Update thumbnail highlights
+const thumbContainer = document.getElementById(`thumbs-${id}`);
+if (thumbContainer) {
+  const thumbs = thumbContainer.querySelectorAll('img');
+  thumbs.forEach((thumb, i) => {
+    thumb.classList.toggle('active-thumb', i === index);
+  });
+}
     // Special handling for resources carousel text
     if (id === 'nok-resources') {
         const descriptions = document.querySelectorAll('#nok-description p');
