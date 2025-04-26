@@ -244,110 +244,65 @@ function initCarousels() {
     });
 }
 
-function updateCarousel(id, direction) {
-    const container = document.getElementById(`items-${id}`);
-    const images = Array.from(container.querySelectorAll('img'));
-    if (images.length === 0) return;
-    
-    let currentIndex = parseInt(container.dataset.index || 0);
-    images[currentIndex].classList.remove('active');
+let currentIndex = 0;
 
-    const carouselContainer = container.closest('.carousel-container');
-    const indicatorsContainer = carouselContainer.querySelector('.carousel-indicators');
-    
-    // Update indicators
-    if (indicatorsContainer) {
-        const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
-        if (indicators[currentIndex]) indicators[currentIndex].classList.remove('active');
-    }
-    
-    // Calculate new index
-    currentIndex = direction === 'next' 
-        ? (currentIndex + 1) % images.length 
-        : (currentIndex - 1 + images.length) % images.length;
-    
-    // Apply changes
-    container.dataset.index = currentIndex;
-    images[currentIndex].classList.add('active');
-    
-    if (indicatorsContainer) {
-        const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
-        if (indicators[currentIndex]) indicators[currentIndex].classList.add('active');
+function updateCarousel(carouselId, direction) {
+    const carousel = document.getElementById(`items-${carouselId}`);
+    const images = carousel.querySelectorAll("img");
+    const totalImages = images.length;
+
+    // Update index based on direction
+    if (direction === 'prev') {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    } else if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % totalImages;
     }
 
-    // Special handling for resources carousel text
-    if (id === 'nok-resources') {
-        const descriptions = document.querySelectorAll('#nok-description p');
-        descriptions.forEach((desc, i) => {
-            desc.style.display = i === currentIndex ? 'block' : 'none';
-        });
-    }
+    // Update the carousel display
+    carousel.setAttribute("data-index", currentIndex);
+
+    // Update active state for the images
+    updateImageDisplay(carouselId, currentIndex);
+
+    // Update thumbnails active state
+    updateThumbnails(carouselId, currentIndex);
 }
 
-function goToSlide(id, index) {
-    const container = document.getElementById(`items-${id}`);
-    const images = Array.from(container.querySelectorAll('img'));
-    const currentIndex = parseInt(container.dataset.index || 0);
-    
-    // Remove active class from the current main image
-    images[currentIndex].classList.remove('active');
+function goToSlide(carouselId, index) {
+    const carousel = document.getElementById(`items-${carouselId}`);
+    carousel.setAttribute("data-index", index);
+    currentIndex = index;
 
-    const carouselContainer = container.closest('.carousel-container');
-    const indicatorsContainer = carouselContainer.querySelector('.carousel-indicators');
-    
-    // Update active indicator for the main carousel
-    if (indicatorsContainer) {
-        const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
-        if (indicators[currentIndex]) indicators[currentIndex].classList.remove('active');
-    }
-    
-    // Set new index and add active class to new main image
-    container.dataset.index = index;
-    images[index].classList.add('active');
-    
-    // Update the main carousel indicator
-    if (indicatorsContainer) {
-        const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
-        if (indicators[index]) indicators[index].classList.add('active');
-    }
+    // Update active state for the images
+    updateImageDisplay(carouselId, currentIndex);
 
-    // Sync thumbnail highlight and scroll into view
-    const thumbsContainer = document.getElementById(`thumbs-${id}`);
-    if (thumbsContainer) {
-        const thumbs = thumbsContainer.querySelectorAll('img');
-        thumbs.forEach((thumb, i) => {
-            // Toggle active class based on the new index for the main carousel
-            thumb.classList.toggle('active-thumb', i === index);
-
-            // Scroll thumbnail into view if it's the active one
-            if (i === index && typeof thumb.scrollIntoView === 'function') {
-                thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-            }
-        });
-    }
+    // Update thumbnails active state
+    updateThumbnails(carouselId, currentIndex);
 }
 
-// Event listeners for arrows (next and previous)
-document.getElementById('prev-button').addEventListener('click', function() {
-    const container = document.querySelector('.carousel-container');
-    const currentIndex = parseInt(container.querySelector('[data-index]').dataset.index || 0);
-    const newIndex = (currentIndex - 1 + container.querySelectorAll('.carousel-item').length) % container.querySelectorAll('.carousel-item').length;
-    goToSlide('main-carousel', newIndex);
-});
+function updateImageDisplay(carouselId, index) {
+    const carousel = document.getElementById(`items-${carouselId}`);
+    const images = carousel.querySelectorAll("img");
 
-document.getElementById('next-button').addEventListener('click', function() {
-    const container = document.querySelector('.carousel-container');
-    const currentIndex = parseInt(container.querySelector('[data-index]').dataset.index || 0);
-    const newIndex = (currentIndex + 1) % container.querySelectorAll('.carousel-item').length;
-    goToSlide('main-carousel', newIndex);
-});
-
-// Event listeners for thumbnail clicks
-document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-    thumb.addEventListener('click', function() {
-        goToSlide('main-carousel', index);
+    // Hide all images
+    images.forEach((img, i) => {
+        img.style.display = 'none';
     });
-});
+
+    // Show the current image
+    images[index].style.display = 'block';
+}
+
+function updateThumbnails(carouselId, index) {
+    const thumbs = document.querySelectorAll(`#thumbs-${carouselId} img`);
+    thumbs.forEach((thumb, i) => {
+        if (i === index) {
+            thumb.classList.add("active-thumb");
+        } else {
+            thumb.classList.remove("active-thumb");
+        }
+    });
+}
 
 
 // ======================
