@@ -306,13 +306,13 @@ function goToSlide(id, index) {
         const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
         if (indicators[index]) indicators[index].classList.add('active');
     }
-// Scroll the thumbnail into view smoothly
+// Sync thumbnail highlight and scroll into view
 const thumbsContainer = document.getElementById(`thumbs-${id}`);
 if (thumbsContainer) {
   const thumbs = thumbsContainer.querySelectorAll('img');
   thumbs.forEach((thumb, i) => {
-    thumb.classList.toggle('active-thumb', i === index);
-    if (i === index && typeof thumb.scrollIntoView === 'function') {
+    thumb.classList.toggle('active-thumb', i === currentIndex);
+    if (i === currentIndex && typeof thumb.scrollIntoView === 'function') {
       thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
   });
