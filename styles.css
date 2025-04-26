@@ -497,10 +497,14 @@ h4::before {
 .carousel-thumbnails img.active-thumb {
   opacity: 1;
   transform: scale(1.05);
-  border-color: #665544;
+  border-color: #D1B097;
   scroll-margin-inline: 20px;
 }
 
+/* Dark mode styles */
+body.dark-mode .carousel-thumbnails img.active-thumb {
+  border-color: #665544; /* Dark theme border color */
+}
 
 
 /* 6. Grid System */
