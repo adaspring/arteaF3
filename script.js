@@ -316,22 +316,12 @@ if (thumbsContainer) {
       thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
   });
-}
-
-// Scroll the thumbnail into view smoothly
-const thumbsContainer = document.getElementById(`thumbs-${id}`);
-if (thumbsContainer) {
-  const thumbs = thumbsContainer.querySelectorAll('img');
-  thumbs.forEach((thumb, i) => {
     thumb.classList.toggle('active-thumb', i === index);
     if (i === index && typeof thumb.scrollIntoView === 'function') {
       thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
   });
 }
-
-
-
     
 }
 
