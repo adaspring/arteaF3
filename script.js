@@ -306,21 +306,17 @@ function goToSlide(id, index) {
         const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
         if (indicators[index]) indicators[index].classList.add('active');
     }
-// Update thumbnail highlights
-const thumbContainer = document.getElementById(`thumbs-${id}`);
-if (thumbContainer) {
-  const thumbs = thumbContainer.querySelectorAll('img');
+// Scroll the thumbnail into view smoothly
+const thumbsContainer = document.getElementById(`thumbs-${id}`);
+if (thumbsContainer) {
+  const thumbs = thumbsContainer.querySelectorAll('img');
   thumbs.forEach((thumb, i) => {
     thumb.classList.toggle('active-thumb', i === index);
+    if (i === index && typeof thumb.scrollIntoView === 'function') {
+      thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
   });
 }
-    // Special handling for resources carousel text
-    if (id === 'nok-resources') {
-        const descriptions = document.querySelectorAll('#nok-description p');
-        descriptions.forEach((desc, i) => {
-            desc.style.display = i === index ? 'block' : 'none';
-        });
-    }
 }
 
 
