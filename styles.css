@@ -476,7 +476,10 @@ h4::before {
   justify-content: center;
   gap: 10px;
   margin-top: 15px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  padding-bottom: 5px;
 }
 
 .carousel-thumbnails img {
@@ -485,15 +488,17 @@ h4::before {
   object-fit: cover;
   opacity: 0.6;
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
   border-radius: 4px;
   border: 2px solid transparent;
+  flex-shrink: 0;
 }
 
 .carousel-thumbnails img.active-thumb {
   opacity: 1;
   transform: scale(1.05);
   border-color: #665544;
+  scroll-margin-inline: 20px;
 }
 
 
