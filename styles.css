@@ -505,6 +505,21 @@ body.dark-theme .carousel-thumbnails img.active-thumb {
   border-color: #665544;
 }
 
+.text-wrap-image {
+  overflow: hidden;
+  margin-bottom: 1.5em;
+}
+
+.wrap-thumbnail {
+  float: left;
+  width: 200px;
+  height: auto;
+  margin: 0 1em 1em 0;
+  border-radius: 8px; /* optional - makes it look smoother like thumbnails */
+}
+
+
+
 /* 6. Grid System */
 /* ================================================== */
 .grid-container {
