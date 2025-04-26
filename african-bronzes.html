@@ -11,6 +11,7 @@
     <link rel="canonical" href="https://artea.netlify.app/african-bronzes.html">
     <title>African Bronzes | ARTEA</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dark-theme.css">
 </head>
 <body>
     <header>
@@ -111,6 +112,56 @@
                 </div>
                 <button onclick="updateCarousel('akhan-spoon', 'next')" aria-label="Next image" tabindex="0">→</button>
             </div>
+
+   <div class="carousel-thumbnails" id="thumbs-akhan-spoon">
+    
+         <img 
+  src="https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-4_ynnkkl.jpg?w=200&f_auto,q_auto,dpr_auto" 
+  alt="Thumb 1" 
+  class="active-thumb" 
+  onclick="goToSlide('akhan-spoon', 0)"
+  srcset="
+    https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-4_ynnkkl.jpg?w=100&f_auto,q_auto,dpr_auto 100w,
+    https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-4_ynnkkl.jpg?w=200&f_auto,q_auto,dpr_auto 200w,
+    https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-4_ynnkkl.jpg?w=400&f_auto,q_auto,dpr_auto 400w
+  "
+  sizes="(max-width: 600px) 30vw, (max-width: 1200px) 15vw, 10vw"
+/>         
+                  
+        <img 
+  src="https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-1_ina54s.jpg?w=200&f_auto,q_auto,dpr_auto" 
+  alt="Thumb 2" 
+  onclick="goToSlide('akhan-spoon', 1)"
+  srcset="
+    https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-1_ina54s.jpg?w=100&f_auto,q_auto,dpr_auto 100w,
+    https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-1_ina54s.jpg?w=200&f_auto,q_auto,dpr_auto 200w,
+    https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-1_ina54s.jpg?w=400&f_auto,q_auto,dpr_auto 400w
+  "
+  sizes="(max-width: 600px) 30vw, (max-width: 1200px) 15vw, 10vw"
+/>          
+                  
+              <img 
+  src="https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-certificate_clylyr.jpg?w=200&f_auto,q_auto,dpr_auto" 
+  alt="Thumb 3"
+  onclick="goToSlide('akhan-spoon', 2)"
+  srcset="
+    https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-certificate_clylyr.jpg?w=100&f_auto,q_auto,dpr_auto 100w,
+    https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-certificate_clylyr.jpg?w=200&f_auto,q_auto,dpr_auto 200w,
+    https://res.cloudinary.com/dc0pgvkii/image/upload/akhan-spoon-certificate_clylyr.jpg?w=400&f_auto,q_auto,dpr_auto 400w
+  "
+  sizes="(max-width: 600px) 30vw, (max-width: 1200px) 15vw, 10vw"
+/>    
+   </div>
+
+
+
+
+
+
+
+            
+
+            
             <p class="category-description">Material: Terracotta | Height: 32cm 
                 Provenance: French private collection 
                 Thermoluminescence certificate (1999).
@@ -336,5 +387,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="theme-toggle.js"></script>
 </body>
 </html>
