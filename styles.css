@@ -503,20 +503,7 @@ h4::before {
 
 body.dark-theme .carousel-thumbnails img.active-thumb {
   border-color: #665544;
-  background-color: rgba(102, 85, 68, 0.1);/* Dark theme border color */
 }
-
-/* Ensure inactive thumb opacity in dark theme */
-body.dark-theme .carousel-thumbnails img:not(.active-thumb) {
-  opacity: 0.5; /* Match light theme inactive opacity */
-  border-color: transparent !important; /* Force transparent for inactive */
-}
-
-
-
-
-
-
 
 /* 6. Grid System */
 /* ================================================== */
