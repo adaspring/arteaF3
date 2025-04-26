@@ -530,23 +530,32 @@ h4::before {
 /* Template 2: Smaller Inline Image */
 .grid-container.image-inline {
     grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 1rem 0;
-    float: left; /* or right */
+    max-width: 280px; /* Reduced from 400px */
+    float: left;
+    margin: 0 1.5rem 1rem 0; /* Added margin for spacing */
     shape-outside: margin-box;
-    padding: 0 1.5rem 1rem 0;
+    shape-margin: 1rem; /* Better text wrapping */
+    padding: 0;
+}
+
+.grid-container.image-inline.right {
+    float: right;
+    margin: 0 0 1rem 1.5rem; /* Mirror margins */
+    padding: 0;
 }
 
 .grid-container.image-inline .grid-item {
-    aspect-ratio: unset;
-    max-height: 50vh;
+    aspect-ratio: 4/3; /* Enforce aspect ratio */
+    max-height: 40vh; /* Reduced from 50vh */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 0;
 }
 
-/* Right-aligned alternative */
-.grid-container.image-inline.right {
-    float: right;
-    padding: 0 0 1rem 1.5rem;
+/* Add this new rule */
+.grid-container.image-inline img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Prevent cropping */
 }
 
 /* Lightbox modification for single images remains same */
