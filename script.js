@@ -289,40 +289,42 @@ function goToSlide(id, index) {
     const images = Array.from(container.querySelectorAll('img'));
     const currentIndex = parseInt(container.dataset.index || 0);
     
+    // Remove active class from current main image
     images[currentIndex].classList.remove('active');
 
     const carouselContainer = container.closest('.carousel-container');
     const indicatorsContainer = carouselContainer.querySelector('.carousel-indicators');
     
+    // Update active indicator for main carousel
     if (indicatorsContainer) {
         const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
         if (indicators[currentIndex]) indicators[currentIndex].classList.remove('active');
     }
     
+    // Set new index and add active class to new main image
     container.dataset.index = index;
     images[index].classList.add('active');
     
+    // Update the main carousel indicator
     if (indicatorsContainer) {
         const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
         if (indicators[index]) indicators[index].classList.add('active');
     }
-// Sync thumbnail highlight and scroll into view
-const thumbsContainer = document.getElementById(`thumbs-${id}`);
-if (thumbsContainer) {
-  const thumbs = thumbsContainer.querySelectorAll('img');
-  thumbs.forEach((thumb, i) => {
-    thumb.classList.toggle('active-thumb', i === currentIndex);
-    if (i === currentIndex && typeof thumb.scrollIntoView === 'function') {
-      thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+
+    // Sync thumbnail highlight and scroll into view
+    const thumbsContainer = document.getElementById(`thumbs-${id}`);
+    if (thumbsContainer) {
+        const thumbs = thumbsContainer.querySelectorAll('img');
+        thumbs.forEach((thumb, i) => {
+            // Toggle active class based on the new index for main carousel
+            thumb.classList.toggle('active-thumb', i === index);
+
+            // Scroll thumbnail into view if it's the active one
+            if (i === index && typeof thumb.scrollIntoView === 'function') {
+                thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+        });
     }
-  });
-    thumb.classList.toggle('active-thumb', i === index);
-    if (i === index && typeof thumb.scrollIntoView === 'function') {
-      thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }
-  });
-}
-    
 }
 
 
