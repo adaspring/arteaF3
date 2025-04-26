@@ -289,32 +289,65 @@ function goToSlide(id, index) {
     const images = Array.from(container.querySelectorAll('img'));
     const currentIndex = parseInt(container.dataset.index || 0);
     
+    // Remove active class from the current main image
     images[currentIndex].classList.remove('active');
 
     const carouselContainer = container.closest('.carousel-container');
     const indicatorsContainer = carouselContainer.querySelector('.carousel-indicators');
     
+    // Update active indicator for the main carousel
     if (indicatorsContainer) {
         const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
         if (indicators[currentIndex]) indicators[currentIndex].classList.remove('active');
     }
     
+    // Set new index and add active class to new main image
     container.dataset.index = index;
     images[index].classList.add('active');
     
+    // Update the main carousel indicator
     if (indicatorsContainer) {
         const indicators = Array.from(indicatorsContainer.querySelectorAll('.indicator'));
         if (indicators[index]) indicators[index].classList.add('active');
     }
 
-    // Special handling for resources carousel text
-    if (id === 'nok-resources') {
-        const descriptions = document.querySelectorAll('#nok-description p');
-        descriptions.forEach((desc, i) => {
-            desc.style.display = i === index ? 'block' : 'none';
+    // Sync thumbnail highlight and scroll into view
+    const thumbsContainer = document.getElementById(`thumbs-${id}`);
+    if (thumbsContainer) {
+        const thumbs = thumbsContainer.querySelectorAll('img');
+        thumbs.forEach((thumb, i) => {
+            // Toggle active class based on the new index for the main carousel
+            thumb.classList.toggle('active-thumb', i === index);
+
+            // Scroll thumbnail into view if it's the active one
+            if (i === index && typeof thumb.scrollIntoView === 'function') {
+                thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
         });
     }
 }
+
+// Event listeners for arrows (next and previous)
+document.getElementById('prev-button').addEventListener('click', function() {
+    const container = document.querySelector('.carousel-container');
+    const currentIndex = parseInt(container.querySelector('[data-index]').dataset.index || 0);
+    const newIndex = (currentIndex - 1 + container.querySelectorAll('.carousel-item').length) % container.querySelectorAll('.carousel-item').length;
+    goToSlide('main-carousel', newIndex);
+});
+
+document.getElementById('next-button').addEventListener('click', function() {
+    const container = document.querySelector('.carousel-container');
+    const currentIndex = parseInt(container.querySelector('[data-index]').dataset.index || 0);
+    const newIndex = (currentIndex + 1) % container.querySelectorAll('.carousel-item').length;
+    goToSlide('main-carousel', newIndex);
+});
+
+// Event listeners for thumbnail clicks
+document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+    thumb.addEventListener('click', function() {
+        goToSlide('main-carousel', index);
+    });
+});
 
 
 // ======================
