@@ -527,30 +527,34 @@ h4::before {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Template 2: Smaller Inline Image */
-/* 1. Container Wrapper */
+
+/* Template 2: Inline Image */
 .grid-container.image-inline {
-  max-width: 220px;
-  float: left;
-  margin: 0 1.2rem 0.8rem 0;
-  shape-outside: inset(0 0 0 0 round 8px);
-  shape-margin: 1rem;
-  padding: 0; /* Reset existing padding */
+    max-width: 200px; /* Reduce further */
+    float: left;
+    margin: 0 1rem 0.5rem 0; /* Tighter margins */
+    shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Sharp edges */
+    shape-margin: 0.8rem; /* Reduce spacing */
+    padding: 0;
 }
 
-/* 2. Image Holder */
+.grid-container.image-inline.right {
+    float: right;
+    margin: 0 0 0.5rem 1rem; /* Mirror margins */
+    shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+}
+
 .grid-container.image-inline .grid-item {
-  aspect-ratio: 3/4; /* Override 'unset' */
-  max-height: 35vh;  /* Reduce from 50vh */
+    aspect-ratio: 2/3; /* Taller/narrower ratio */
+    max-height: 30vh; /* Smaller vertical space */
 }
 
-/* 3. Image Itself */
 .grid-container.image-inline img {
-  width: 100%;
-  height: 100%;      /* Fill container */
-  object-fit: cover; /* No distortion */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top; /* Focus on key image area */
 }
-
 /* Lightbox modification for single images remains same */
 #lightbox.single-image .lightbox-nav { display: none; }
 
