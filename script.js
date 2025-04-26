@@ -244,66 +244,42 @@ function initCarousels() {
     });
 }
 
-let currentIndex = 0;
+function updateCarousel(id, direction) {
+  const container = document.getElementById(`items-${id}`);
+  const index = parseInt(container.dataset.index, 10);
+  const images = container.querySelectorAll("img");
+  let newIndex = direction === "next" ? index + 1 : index - 1;
 
-function updateCarousel(carouselId, direction) {
-    const carousel = document.getElementById(`items-${carouselId}`);
-    const images = carousel.querySelectorAll("img");
-    const totalImages = images.length;
+  if (newIndex < 0) newIndex = images.length - 1;
+  if (newIndex >= images.length) newIndex = 0;
 
-    // Update index based on direction
-    if (direction === 'prev') {
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-    } else if (direction === 'next') {
-        currentIndex = (currentIndex + 1) % totalImages;
-    }
-
-    // Update the carousel display
-    carousel.setAttribute("data-index", currentIndex);
-
-    // Update active state for the images
-    updateImageDisplay(carouselId, currentIndex);
-
-    // Update thumbnails active state
-    updateThumbnails(carouselId, currentIndex);
+  goToSlide(id, newIndex);
 }
 
-function goToSlide(carouselId, index) {
-    const carousel = document.getElementById(`items-${carouselId}`);
-    carousel.setAttribute("data-index", index);
-    currentIndex = index;
+function goToSlide(id, index) {
+  const container = document.getElementById(`items-${id}`);
+  const thumbs = document.querySelectorAll(`#thumbs-${id} img`);
+  const images = container.querySelectorAll("img");
 
-    // Update active state for the images
-    updateImageDisplay(carouselId, currentIndex);
+  container.dataset.index = index;
 
-    // Update thumbnails active state
-    updateThumbnails(carouselId, currentIndex);
+  images.forEach((img, i) => {
+    img.style.display = i === index ? "block" : "none";
+  });
+
+  thumbs.forEach((thumb, i) => {
+    thumb.classList.toggle("active-thumb", i === index);
+  });
 }
 
-function updateImageDisplay(carouselId, index) {
-    const carousel = document.getElementById(`items-${carouselId}`);
-    const images = carousel.querySelectorAll("img");
-
-    // Hide all images
-    images.forEach((img, i) => {
-        img.style.display = 'none';
-    });
-
-    // Show the current image
-    images[index].style.display = 'block';
-}
-
-function updateThumbnails(carouselId, index) {
-    const thumbs = document.querySelectorAll(`#thumbs-${carouselId} img`);
-    thumbs.forEach((thumb, i) => {
-        if (i === index) {
-            thumb.classList.add("active-thumb");
-        } else {
-            thumb.classList.remove("active-thumb");
-        }
-    });
-}
-
+// Initialize all carousels
+document.addEventListener("DOMContentLoaded", () => {
+  const allCarousels = document.querySelectorAll(".carousel-images");
+  allCarousels.forEach(container => {
+    const id = container.id.replace("items-", "");
+    goToSlide(id, 0);
+  });
+});
 
 // ======================
 // Read More Toggle Functionality
