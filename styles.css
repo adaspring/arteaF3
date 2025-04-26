@@ -505,17 +505,19 @@ body.dark-theme .carousel-thumbnails img.active-thumb {
   border-color: #665544;
 }
 
-.text-wrap-image {
-  overflow: hidden;
+.text-wrap-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
   margin-bottom: 1.5em;
+  flex-wrap: wrap; /* allows better behavior on small screens */
 }
 
-.wrap-thumbnail {
-  float: left;
+.text-wrap-flex img.wrap-thumbnail {
+  flex-shrink: 0;
   width: 200px;
   height: auto;
-  margin: 0 1em 1em 0;
-  border-radius: 8px; /* optional - makes it look smoother like thumbnails */
+  border-radius: 8px;
 }
 
 
