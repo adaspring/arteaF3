@@ -477,9 +477,13 @@ h4::before {
   gap: 10px;
   margin-top: 15px;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
   padding-bottom: 5px;
+scroll-behavior: smooth; /* Smooth scroll for non-JS interactions */
+  width: 220px; /* Show 3 thumbs (60px + gaps) */
+  margin: 15px auto 0;
+  padding: 0 20px;
 }
 
 .carousel-thumbnails img {
@@ -492,6 +496,7 @@ h4::before {
   border-radius: 4px;
   border: 2px solid transparent;
   flex-shrink: 0;
+  flex: 0 0 60px; /* Prevent shrinking/growing */
 }
 
 .carousel-thumbnails img.active-thumb {
