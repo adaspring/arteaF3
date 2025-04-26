@@ -260,7 +260,8 @@ function updateCarousel(id, direction) {
 
 function goToSlide(id, index) {
   const container = document.getElementById(`items-${id}`);
-  const thumbs = document.querySelectorAll(`#thumbs-${id} img`);
+  const thumbsContainer = document.getElementById(`thumbs-${id}`);
+  const thumbs = thumbsContainer.querySelectorAll("img");
   const images = container.querySelectorAll("img");
 
   container.dataset.index = index;
@@ -271,9 +272,16 @@ function goToSlide(id, index) {
 
   thumbs.forEach((thumb, i) => {
     thumb.classList.toggle("active-thumb", i === index);
+    // Scroll active thumbnail into view
+    if (i === index) {
+      thumb.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
   });
 }
-
 // Initialize all carousels
 document.addEventListener("DOMContentLoaded", () => {
   const allCarousels = document.querySelectorAll(".carousel-images");
