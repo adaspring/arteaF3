@@ -244,6 +244,8 @@ function initCarousels() {
     });
 }
 
+let currentIndex = 0;  // This is the starting point of your carousel (first image).
+
 function updateCarousel(id, direction) {
   const container = document.getElementById(`items-${id}`);
   const index = parseInt(container.dataset.index, 10);
