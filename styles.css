@@ -529,12 +529,10 @@ h4::before {
 
 /* Template 2: Smaller Inline Image */
 .grid-container.image-inline {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 1rem 0;
-    float: left; /* or right */
-    shape-outside: margin-box;
-    padding: 0 1.5rem 1rem 0;
+    max-width: unset;
+    width: 45%;
+    margin: 1rem 2rem 1rem 0;
+    float: left;
 }
 
 .grid-container.image-inline .grid-item {
@@ -556,16 +554,23 @@ h4::before {
 /* ================================================== */
 .content-section {
     margin: 40px auto;
-    max-width: 800px;
+    max-width: 95%;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 4px;
     color: #333;
+    overflow: hidden;
 }
+
+.subsection, .sub-subsection {
+    width: 100%;
+    max-width: unset;
+    contain-intrinsic-size: auto;
+}
+
 
 .subsection {
     content-visibility: auto;
-    contain-intrinsic-size: auto 1000px;
     margin-bottom: 2.5rem;
     padding: 1.5rem;
     background: rgba(255, 255, 255, 0.5);
