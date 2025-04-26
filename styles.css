@@ -268,16 +268,13 @@ h4::before {
 /* 5. Carousel System */
 /* ================================================== */
 .carousel-container {
+    margin: 60px auto;
     width: 95%;
     max-width: 1200px;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 4px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    margin-top: 60px auto;  /* Top margin */
-    margin-bottom: 0px;  /* Bottom margin */
-    margin-left: auto;   /* Horizontal centering */
-    margin-right: auto;  /* Horizontal centering */
 }
 
 
