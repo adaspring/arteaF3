@@ -349,6 +349,28 @@ document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
     });
 });
 
+// Event listeners for arrows (next and previous)
+document.getElementById('prev-button').addEventListener('click', function() {
+    const container = document.querySelector('.carousel-container');
+    const currentIndex = parseInt(container.querySelector('[data-index]').dataset.index || 0);
+    const newIndex = (currentIndex - 1 + container.querySelectorAll('.carousel-item').length) % container.querySelectorAll('.carousel-item').length;
+    goToSlide('main-carousel', newIndex);
+});
+
+document.getElementById('next-button').addEventListener('click', function() {
+    const container = document.querySelector('.carousel-container');
+    const currentIndex = parseInt(container.querySelector('[data-index]').dataset.index || 0);
+    const newIndex = (currentIndex + 1) % container.querySelectorAll('.carousel-item').length;
+    goToSlide('main-carousel', newIndex);
+});
+
+// Event listeners for thumbnail clicks
+document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+    thumb.addEventListener('click', function() {
+        goToSlide('main-carousel', index);
+    });
+});
+
 // ======================
 // Read More Toggle Functionality
 // ======================
