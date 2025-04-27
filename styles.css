@@ -510,7 +510,7 @@ body.dark-theme .carousel button::after {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin: 15px 0; /* Added vertical margin */
+    margin: 5px 0; /* Added vertical margin */
     padding: 15px 0;
     order: 3; /* Ensures proper order in flex layout */
 }
@@ -522,7 +522,7 @@ body.dark-theme .carousel button::after {
 
 /* Existing carousel-thumbnails rules - add margin-bottom */
 .carousel-thumbnails {
-    margin-bottom: 20px; /* Space between thumbs and indicators */
+    margin-bottom: 10px; /* Space between thumbs and indicators */
     order: 2;
 }
 
