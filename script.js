@@ -211,107 +211,92 @@ function setActivePage() {
 // ======================
 // Carousel System
 // ======================
+// ======================
+// Carousel System (Corrected)
+// ======================
 function initCarousel(id) {
     const container = document.getElementById(`items-${id}`);
+    if (!container) return;
+
     const images = container.querySelectorAll('img');
-    
-    // Reset active states
     images.forEach(img => img.classList.remove('active'));
     if (images.length > 0) images[0].classList.add('active');
 
-    // Create indicators
+    // Create/renew indicators
     const carouselContainer = container.closest('.carousel-container');
-    let indicatorsContainer = carouselContainer.querySelector('.carousel-indicators');
-    
-    if (!indicatorsContainer) {
-        indicatorsContainer = document.createElement('div');
-        indicatorsContainer.className = 'carousel-indicators';
-        carouselContainer.appendChild(indicatorsContainer);
-    }
-    
+    let indicatorsContainer = carouselContainer.querySelector('.carousel-indicators') || document.createElement('div');
+    indicatorsContainer.className = 'carousel-indicators';
     indicatorsContainer.innerHTML = '';
     
-    images.forEach((img, index) => {
+    images.forEach((_, index) => {
         const indicator = document.createElement('div');
-        indicator.className = 'indicator';
-        if (index === 0) indicator.classList.add('active');
+        indicator.className = `indicator ${index === 0 ? 'active' : ''}`;
         indicator.addEventListener('click', () => goToSlide(id, index));
         indicatorsContainer.appendChild(indicator);
     });
     
+    if (!carouselContainer.contains(indicatorsContainer)) {
+        carouselContainer.appendChild(indicatorsContainer);
+    }
+
     container.dataset.index = 0;
 }
 
-let currentIndex = 0;  // This is the starting point of your carousel (first image).
-
 function updateCarousel(id, direction) {
-  const container = document.getElementById(`items-${id}`);
-  const index = parseInt(container.dataset.index, 10);
-  const images = container.querySelectorAll("img");
-  let newIndex = direction === "next" ? index + 1 : index - 1;
+    const container = document.getElementById(`items-${id}`);
+    if (!container) return;
 
-  if (newIndex < 0) newIndex = images.length - 1;
-  if (newIndex >= images.length) newIndex = 0;
-
-  goToSlide(id, newIndex);
-}
-
-// Updated goToSlide function
-function goToSlide(id, index) {
-  const container = document.getElementById(`items-${id}`);
-  const thumbsContainer = document.getElementById(`thumbs-${id}`);
-  const indicators = document.querySelectorAll(`#${id}-section .indicator`);
-  
-  container.dataset.index = index;
-
-  // Update main images
-  container.querySelectorAll('img').forEach((img, i) => {
-    img.style.display = i === index ? 'block' : 'none';
-  });
-
-  // Update thumbnails
-  thumbsContainer.querySelectorAll('img').forEach((thumb, i) => {
-    const isActive = i === index;
-    thumb.classList.toggle('active-thumb', isActive);
+    const index = parseInt(container.dataset.index, 10);
+    const images = container.querySelectorAll('img');
+    let newIndex = direction === "next" ? index + 1 : index - 1;
     
-    if(isActive) {
-      setTimeout(() => {
-        thumb.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
-        });
-      }, 50);
-    }
-  });
-
-  // Update indicators
-  indicators.forEach((indicator, i) => {
-    indicator.classList.toggle('active', i === index);
-  });
+    newIndex = (newIndex + images.length) % images.length;
+    goToSlide(id, newIndex);
 }
 
-const thumbs = document.getElementById(`thumbs-${id}`);
-    if(thumbs) {
-      // Wait for images to load before initial positioning
-      const images = thumbs.querySelectorAll('img');
-      let loadedCount = 0;
-      
-      images.forEach(img => {
-        if(img.complete) loadedCount++;
-        else img.addEventListener('load', () => {
-          if(++loadedCount === images.length) {
-            thumbs.scrollLeft = 0;
-          }
+function goToSlide(id, index) {
+    const container = document.getElementById(`items-${id}`);
+    if (!container) return;
+
+    // Update main image
+    container.querySelectorAll('img').forEach((img, i) => {
+        img.style.display = i === index ? 'block' : 'none';
+    });
+    container.dataset.index = index;
+
+    // Update thumbnails
+    const thumbsContainer = document.getElementById(`thumbs-${id}`);
+    if (thumbsContainer) {
+        thumbsContainer.querySelectorAll('img').forEach((thumb, i) => {
+            thumb.classList.toggle('active-thumb', i === index);
+            if (i === index) {
+                setTimeout(() => thumb.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                }), 50);
+            }
         });
-      });
-      
-      if(loadedCount === images.length) {
-        thumbs.scrollLeft = 0;
-      }
     }
-  });
-});
+
+    // Update indicators
+    const carouselContainer = container.closest('.carousel-container');
+    if (carouselContainer) {
+        carouselContainer.querySelectorAll('.indicator').forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 // ======================
 // Read More Toggle Functionality
@@ -656,22 +641,17 @@ if (currentTheme === 'dark') {
 
 
 
-
-
-
-
 // ======================
-// Initialization
+// Unified Initialization
 // ======================
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // 1. New carousel initialization (ADD THIS)
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize all carousels
     document.querySelectorAll('.carousel-container').forEach(container => {
-        const id = container.id.replace('-section', '');
-        initCarousel(id);
+        const baseId = container.id.replace(/-section$/, '');
+        initCarousel(baseId);
     });
 
-    // 2. Keep the rest of your existing initialization
+    // Initialize other components
     initSubmenus();
     setActivePage();
     initBackToTop();
@@ -679,6 +659,8 @@ if (currentTheme === 'dark') {
     addTouchSupport();
     initLoadingStates();
     setupIndependentScrolling();
-
-    // 3. Remove the old specific resources carousel initialization
 });
+
+
+
+
