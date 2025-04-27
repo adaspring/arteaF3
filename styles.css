@@ -83,6 +83,8 @@ a:hover {
 /* Specific colors */
 .fa-instagram:hover { color: #E4405F; } /* Instagram pink */
 .fa-envelope:hover { color: #EA4335; } /* Gmail red */
+.fa-whatsapp:hover {color: #25D366; } /* WhatsApp brand green */
+
 
 
 /* 2. Header & Navigation */
@@ -1409,6 +1411,10 @@ body.dark-theme .lightbox-caption {
     .video-wrapper {
         border-radius: 4px;
     }
+    .social-container {
+        gap: 15px;
+    }
+
 }
 
 @media (min-width: 769px) {
