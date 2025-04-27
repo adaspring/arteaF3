@@ -359,12 +359,66 @@ h4::before {
 }
 
 .carousel button:first-of-type {
-    left: -30px;
+    left: 20px; /* Adjusted to stay inside the carousel */
 }
 
 .carousel button:last-of-type {
-    right: -30px;
+    right: 20px; /* Adjusted to stay inside the carousel */
 }
+
+
+
+
+
+/* Add these specific arrow transformations back to your code */
+
+/* Left arrow positioning */
+.carousel button:first-of-type::before {
+    transform: translate(-35%, -50%) rotate(-45deg);
+}
+
+/* Right arrow positioning */
+.carousel button:last-of-type::before {
+    transform: translate(-65%, -50%) rotate(135deg);
+}
+
+/* Active states for the arrows */
+.carousel button:first-of-type:active::before {
+    transform: translate(-35%, -50%) rotate(-45deg) scale(0.95);
+}
+
+.carousel button:last-of-type:active::before {
+    transform: translate(-65%, -50%) rotate(135deg) scale(0.95);
+}
+
+/* Hover effects */
+.carousel button:hover::before {
+    filter: drop-shadow(0 0 4px rgba(102, 85, 68, 0.5));
+}
+
+/* Active states for the circular backgrounds */
+.carousel button:first-of-type:active::after,
+.carousel button:last-of-type:active::after {
+    box-shadow: 0 0 18px rgba(204, 213, 174, 0.5);
+    transform: translate(-50%, -50%) scale(0.95);
+    background: rgba(204, 213, 174, 0.4);
+}
+
+/* Hover effect for the circular background */
+.carousel button:hover::after {
+    background: rgba(204, 213, 174, 0.3);
+    box-shadow: 0 0 15px rgba(204, 213, 174, 0.5);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+
+
+
+
+
+
+
+
 
 /* Thumbnail Carousel Styles */
 .carousel-thumbnails {
