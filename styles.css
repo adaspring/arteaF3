@@ -57,6 +57,25 @@ a:hover {
     text-decoration: underline;
 }
 
+
+/* Instagram Icon Styles */
+.instagram-icon {
+    display: inline-block;
+    margin: 15px 10px 0;
+    color: #E4405F; /* Instagram brand color */
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+}
+
+.instagram-icon:hover {
+    color: #C13584; /* Darker hover color */
+    transform: scale(1.15);
+    text-decoration: none;
+}
+
+
+
+
 /* 2. Header & Navigation */
 /* ================================================== */
 header {
@@ -1314,6 +1333,12 @@ body.dark-theme .lightbox-caption {
     #highlight-img {
         aspect-ratio: 3/4;
     }  
+
+.instagram-icon {
+        font-size: 1.5rem;
+        margin: 10px 8px 0;
+}
+
 }
 
 @media (max-width: 480px) {
