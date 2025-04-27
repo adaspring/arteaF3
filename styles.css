@@ -506,26 +506,6 @@ body.dark-theme .carousel button::after {
 }
 
 
-
-
-
-.text-wrap-flex {
-  display: flex;
-  align-items: flex-start;
-  gap: 1em;
-  margin-bottom: 1.5em;
-  flex-wrap: wrap; /* allows better behavior on small screens */
-}
-
-.text-wrap-flex img.wrap-thumbnail {
-  flex-shrink: 0;
-  width: 200px;
-  height: auto;
-  border-radius: 8px;
-}
-
-
-
 /* 6. Grid System */
 /* ================================================== */
 .grid-container {
@@ -1211,7 +1191,88 @@ body.dark-theme .lightbox-caption {
 }
 
 
+/* 12. Image Wrapping */
+/* ====================== */
 
+/* Float-based Wrapping (Classic) */
+.text-wrap-float {
+    float: left;
+    margin: 0 1.5rem 1rem 0;
+    max-width: 45%;
+    shape-outside: margin-box;
+}
+
+.text-wrap-float.right {
+    float: right;
+    margin: 0 0 1rem 1.5rem;
+}
+
+/* Flexbox Wrapping (Modern) */
+.text-wrap-flex {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin: 1.5rem 0;
+}
+
+.text-wrap-flex img {
+    flex: 0 0 280px;
+    max-width: 40%;
+    height: auto;
+    border-radius: 4px;
+    shape-outside: ellipse(150px 250px at 30% 50%);
+}
+
+/* Grid Wrapping (Advanced) */
+.text-wrap-grid {
+    display: grid;
+    grid-template-columns: minmax(250px, 1fr) 2fr;
+    gap: 2rem;
+    align-items: start;
+    margin: 2rem 0;
+}
+
+.text-wrap-grid img {
+    width: 100%;
+    height: auto;
+    grid-column: 1;
+}
+
+.text-wrap-grid.right {
+    grid-template-columns: 2fr minmax(250px, 1fr);
+}
+
+.text-wrap-grid.right img {
+    grid-column: 2;
+}
+
+/* Responsive Handling */
+@media (max-width: 768px) {
+    .text-wrap-flex,
+    .text-wrap-grid {
+        display: block;
+    }
+    
+    .text-wrap-flex img,
+    .text-wrap-grid img {
+        max-width: 100%;
+        float: none;
+        margin: 0 0 1.5rem 0;
+    }
+}
+
+/* Image Caption Style */
+.image-caption {
+    font-size: 0.9rem;
+    color: #665544;
+    margin-top: 0.5rem;
+    text-align: center;
+    font-style: italic;
+}
+
+body.dark-theme .image-caption {
+    color: #CCD5AE;
+}
 
 
 
