@@ -211,37 +211,35 @@ function setActivePage() {
 // ======================
 // Carousel System
 // ======================
-function initCarousels() {
-    document.querySelectorAll('.carousel-images').forEach(container => {
-        const id = container.id.split('-')[1];
-        const images = container.querySelectorAll('img');
-        
-        // Reset active states
-        images.forEach(img => img.classList.remove('active'));
-        if (images.length > 0) images[0].classList.add('active');
+function initCarousel(id) {
+    const container = document.getElementById(`items-${id}`);
+    const images = container.querySelectorAll('img');
+    
+    // Reset active states
+    images.forEach(img => img.classList.remove('active'));
+    if (images.length > 0) images[0].classList.add('active');
 
-        // Create indicators
-        const carouselContainer = container.closest('.carousel-container');
-        let indicatorsContainer = carouselContainer.querySelector('.carousel-indicators');
-        
-        if (!indicatorsContainer) {
-            indicatorsContainer = document.createElement('div');
-            indicatorsContainer.className = 'carousel-indicators';
-            carouselContainer.appendChild(indicatorsContainer);
-        }
-        
-        indicatorsContainer.innerHTML = '';
-        
-        images.forEach((img, index) => {
-            const indicator = document.createElement('div');
-            indicator.className = 'indicator';
-            if (index === 0) indicator.classList.add('active');
-            indicator.addEventListener('click', () => goToSlide(id, index));
-            indicatorsContainer.appendChild(indicator);
-        });
-        
-        container.dataset.index = 0;
+    // Create indicators
+    const carouselContainer = container.closest('.carousel-container');
+    let indicatorsContainer = carouselContainer.querySelector('.carousel-indicators');
+    
+    if (!indicatorsContainer) {
+        indicatorsContainer = document.createElement('div');
+        indicatorsContainer.className = 'carousel-indicators';
+        carouselContainer.appendChild(indicatorsContainer);
+    }
+    
+    indicatorsContainer.innerHTML = '';
+    
+    images.forEach((img, index) => {
+        const indicator = document.createElement('div');
+        indicator.className = 'indicator';
+        if (index === 0) indicator.classList.add('active');
+        indicator.addEventListener('click', () => goToSlide(id, index));
+        indicatorsContainer.appendChild(indicator);
     });
+    
+    container.dataset.index = 0;
 }
 
 let currentIndex = 0;  // This is the starting point of your carousel (first image).
@@ -672,7 +670,10 @@ if (currentTheme === 'dark') {
 // ======================
 // Initialization
 // ======================
-document.addEventListener('DOMContentLoaded', () => {
+
+   
+    
+    
     // Existing initializations
     initSubmenus();
     setActivePage();
@@ -683,12 +684,21 @@ document.addEventListener('DOMContentLoaded', () => {
     initLoadingStates();
     setupIndependentScrolling();
 
-    // Initialize resources carousel descriptions
-    const resourcesCarousel = document.getElementById('items-nok-resources');
-    if (resourcesCarousel) {
-        const initialIndex = parseInt(resourcesCarousel.dataset.index || 0);
-        document.querySelectorAll('#nok-description p').forEach((p, i) => {
-            p.style.display = i === initialIndex ? 'block' : 'none';
-        });
-    }
+    /document.addEventListener('DOMContentLoaded', () => {
+    // 1. New carousel initialization (ADD THIS)
+    document.querySelectorAll('.carousel-container').forEach(container => {
+        const id = container.id.replace('-section', '');
+        initCarousel(id);
+    });
+
+    // 2. Keep the rest of your existing initialization
+    initSubmenus();
+    setActivePage();
+    initBackToTop();
+    initLightbox();
+    addTouchSupport();
+    initLoadingStates();
+    setupIndependentScrolling();
+
+    // 3. Remove the old specific resources carousel initialization
 });
