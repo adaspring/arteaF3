@@ -58,28 +58,31 @@ a:hover {
 }
 
 
-/* Instagram Icon Styles */
-.instagram-icon {
-    display: inline-block;
-    margin: 15px 10px 0;
-    color: #E4405F; /* Instagram brand color */
-    font-size: 1.8rem;
-    transition: transform 0.3s ease;
-}
-
-.instagram-icon:hover {
-    color: #C13584; /* Darker hover color */
-    transform: scale(1.15);
-    text-decoration: none;
-}
-
+/* Replace .instagram-icon with .social-icon */
 .social-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
     width: 100%;
-    text-align: center;
     margin-top: -15px;
     margin-bottom: -15px
 }
 
+.social-icon {
+    display: inline-block;
+    font-size: 2rem;
+    color: #665544; /* Base color */
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    text-decoration: none;
+}
+
+/* Specific colors */
+.fa-instagram:hover { color: #E4405F; } /* Instagram pink */
+.fa-envelope:hover { color: #EA4335; } /* Gmail red */
 
 
 /* 2. Header & Navigation */
@@ -1344,10 +1347,12 @@ body.dark-theme .lightbox-caption {
         aspect-ratio: 3/4;
     }  
 
-.instagram-icon {
-        font-size: 1.5rem;
-        margin: 10px 8px 0;
-}
+.social-container {
+        gap: 20px;
+    }
+.social-icon {
+        font-size: 1.7rem;
+    }
 
 }
 
