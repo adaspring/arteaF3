@@ -211,113 +211,78 @@ function setActivePage() {
 // ======================
 // Carousel System
 // ======================
-function initCarousels() {
-    document.querySelectorAll('.carousel-images').forEach(container => {
-        const id = container.id.split('-')[1];
-        const images = container.querySelectorAll('img');
-        
-        // Reset active states
-        images.forEach(img => img.classList.remove('active'));
-        if (images.length > 0) images[0].classList.add('active');
+// Universal Carousel Controller
+class UniversalCarousel {
+    constructor(container) {
+        this.container = container;
+        this.id = container.dataset.carouselId;
+        this.init();
+    }
 
-        // Create indicators
-        const carouselContainer = container.closest('.carousel-container');
-        let indicatorsContainer = carouselContainer.querySelector('.carousel-indicators');
+    init() {
+        this.mainImages = this.container.querySelectorAll('.main-image');
+        this.thumbnails = this.container.querySelectorAll('.thumbnail-item');
+        this.indicators = this.container.querySelectorAll('.carousel-indicator');
+        this.currentIndex = 0;
         
-        if (!indicatorsContainer) {
-            indicatorsContainer = document.createElement('div');
-            indicatorsContainer.className = 'carousel-indicators';
-            carouselContainer.appendChild(indicatorsContainer);
-        }
-        
-        indicatorsContainer.innerHTML = '';
-        
-        images.forEach((img, index) => {
-            const indicator = document.createElement('div');
-            indicator.className = 'indicator';
-            if (index === 0) indicator.classList.add('active');
-            indicator.addEventListener('click', () => goToSlide(id, index));
-            indicatorsContainer.appendChild(indicator);
+        this.addEventListeners();
+        this.goToSlide(0);
+    }
+
+    addEventListeners() {
+        // Arrow navigation
+        this.container.querySelectorAll('.nav-arrow').forEach(arrow => {
+            arrow.addEventListener('click', (e) => {
+                const direction = arrow.classList.contains('next') ? 'next' : 'prev';
+                this.updateCarousel(direction);
+            });
         });
-        
-        container.dataset.index = 0;
+
+        // Thumbnail click
+        this.thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => this.goToSlide(index));
+        });
+
+        // Indicator click
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+    }
+
+    updateCarousel(direction) {
+        let newIndex = direction === 'next' ? this.currentIndex + 1 : this.currentIndex - 1;
+        if(newIndex < 0) newIndex = this.mainImages.length - 1;
+        if(newIndex >= this.mainImages.length) newIndex = 0;
+        this.goToSlide(newIndex);
+    }
+
+    goToSlide(index) {
+        // Update main images
+        this.mainImages.forEach(img => img.classList.remove('active'));
+        this.mainImages[index].classList.add('active');
+
+        // Update thumbnails
+        this.thumbnails.forEach(thumb => thumb.classList.remove('active'));
+        this.thumbnails[index].classList.add('active');
+        this.thumbnails[index].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+        });
+
+        // Update indicators
+        this.indicators.forEach(indicator => indicator.classList.remove('active'));
+        this.indicators[index].classList.add('active');
+
+        this.currentIndex = index;
+    }
+}
+
+// Initialize all carousels on page
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.universal-carousel').forEach(container => {
+        new UniversalCarousel(container);
     });
-}
-
-let currentIndex = 0;  // This is the starting point of your carousel (first image).
-
-function updateCarousel(id, direction) {
-  const container = document.getElementById(`items-${id}`);
-  const index = parseInt(container.dataset.index, 10);
-  const images = container.querySelectorAll("img");
-  let newIndex = direction === "next" ? index + 1 : index - 1;
-
-  if (newIndex < 0) newIndex = images.length - 1;
-  if (newIndex >= images.length) newIndex = 0;
-
-  goToSlide(id, newIndex);
-}
-
-// Updated goToSlide function
-function goToSlide(id, index) {
-  const container = document.getElementById(`items-${id}`);
-  const thumbsContainer = document.getElementById(`thumbs-${id}`);
-  const indicators = document.querySelectorAll(`#${id}-section .indicator`);
-  
-  container.dataset.index = index;
-
-  // Update main images
-  container.querySelectorAll('img').forEach((img, i) => {
-    img.style.display = i === index ? 'block' : 'none';
-  });
-
-  // Update thumbnails
-  thumbsContainer.querySelectorAll('img').forEach((thumb, i) => {
-    const isActive = i === index;
-    thumb.classList.toggle('active-thumb', isActive);
-    
-    if(isActive) {
-      setTimeout(() => {
-        thumb.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
-        });
-      }, 50);
-    }
-  });
-
-  // Update indicators
-  indicators.forEach((indicator, i) => {
-    indicator.classList.toggle('active', i === index);
-  });
-}
-
-// Improved initialization
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.carousel-container').forEach(container => {
-    const id = container.id.replace('-section', '');
-    const thumbs = document.getElementById(`thumbs-${id}`);
-    
-    if(thumbs) {
-      // Wait for images to load before initial positioning
-      const images = thumbs.querySelectorAll('img');
-      let loadedCount = 0;
-      
-      images.forEach(img => {
-        if(img.complete) loadedCount++;
-        else img.addEventListener('load', () => {
-          if(++loadedCount === images.length) {
-            thumbs.scrollLeft = 0;
-          }
-        });
-      });
-      
-      if(loadedCount === images.length) {
-        thumbs.scrollLeft = 0;
-      }
-    }
-  });
 });
 // ======================
 // Read More Toggle Functionality
