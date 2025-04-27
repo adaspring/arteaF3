@@ -258,27 +258,26 @@ function updateCarousel(id, direction) {
   goToSlide(id, newIndex);
 }
 
+// Updated goToSlide function
 function goToSlide(id, index) {
   const container = document.getElementById(`items-${id}`);
   const thumbsContainer = document.getElementById(`thumbs-${id}`);
   const indicators = document.querySelectorAll(`#${id}-section .indicator`);
-  const thumbs = thumbsContainer.querySelectorAll("img");
-  const images = container.querySelectorAll("img");
-
+  
   container.dataset.index = index;
 
   // Update main images
-  images.forEach((img, i) => {
-    img.style.display = i === index ? "block" : "none";
+  container.querySelectorAll('img').forEach((img, i) => {
+    img.style.display = i === index ? 'block' : 'none';
   });
 
   // Update thumbnails
-  thumbs.forEach((thumb, i) => {
+  thumbsContainer.querySelectorAll('img').forEach((thumb, i) => {
     const isActive = i === index;
-    thumb.classList.toggle("active-thumb", isActive);
+    thumb.classList.toggle('active-thumb', isActive);
     
-    if (isActive) {
-      setTimeout(() => { // Ensure smooth scroll after DOM update
+    if(isActive) {
+      setTimeout(() => {
         thumb.scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
@@ -294,19 +293,32 @@ function goToSlide(id, index) {
   });
 }
 
-// Initialize first slide position
+// Improved initialization
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.carousel-container').forEach(container => {
     const id = container.id.replace('-section', '');
     const thumbs = document.getElementById(`thumbs-${id}`);
-    if (thumbs) {
-      setTimeout(() => {
-        thumbs.scrollLeft = 0; // Reset to first thumbnail
-      }, 100);
+    
+    if(thumbs) {
+      // Wait for images to load before initial positioning
+      const images = thumbs.querySelectorAll('img');
+      let loadedCount = 0;
+      
+      images.forEach(img => {
+        if(img.complete) loadedCount++;
+        else img.addEventListener('load', () => {
+          if(++loadedCount === images.length) {
+            thumbs.scrollLeft = 0;
+          }
+        });
+      });
+      
+      if(loadedCount === images.length) {
+        thumbs.scrollLeft = 0;
+      }
     }
   });
 });
-
 // ======================
 // Read More Toggle Functionality
 // ======================
