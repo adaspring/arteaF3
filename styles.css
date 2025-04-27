@@ -617,7 +617,7 @@ body.dark-theme .carousel button::after {
     color: #333;
 }
 
-.content-section p {
+#about.content-section p {
     font-size: 1.1rem; /* Text size */
     text-align: justify; /* Justification */
     line-height: 1.7; /* Line spacing */
