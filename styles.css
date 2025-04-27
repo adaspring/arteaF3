@@ -661,6 +661,21 @@ body.dark-theme .carousel button::after {
 text-align: justify; /* Justification */
 }
 
+.subsection a {
+hyphens: auto;
+    -webkit-hyphens: auto;
+    margin-bottom: 0.8rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #444;
+    width: 100%; /* NEW */
+    max-width: 100%; /* NEW */
+    overflow-wrap: break-word; /* NEW */
+text-align: justify; /* Justification */
+}
+    
+
 .subsection h3,
 .sub-subsection h4 {
     text-align: left;
