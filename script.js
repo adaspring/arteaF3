@@ -671,20 +671,7 @@ if (currentTheme === 'dark') {
 // Initialization
 // ======================
 
-   
-    
-    
-    // Existing initializations
-    initSubmenus();
-    setActivePage();
-    initCarousels();
-    initBackToTop();
-    initLightbox();
-    addTouchSupport();
-    initLoadingStates();
-    setupIndependentScrolling();
-
-    /document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     // 1. New carousel initialization (ADD THIS)
     document.querySelectorAll('.carousel-container').forEach(container => {
         const id = container.id.replace('-section', '');
