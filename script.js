@@ -291,14 +291,7 @@ function goToSlide(id, index) {
   });
 }
 
-// Improved initialization
-document.addEventListener("DOMContentLoaded 
-    document.querySelectorAll('.carousel-container').forEach(container => {
-        const id = container.id.replace('-section', '');
-        initCarousel(id); // You'll need to create this function
-    });
-                          const thumbs = document.getElementById(`thumbs-${id}`);
-    
+const thumbs = document.getElementById(`thumbs-${id}`);
     if(thumbs) {
       // Wait for images to load before initial positioning
       const images = thumbs.querySelectorAll('img');
