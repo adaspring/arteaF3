@@ -270,47 +270,115 @@ h4::before {
 
 /* 5. Carousel System */
 /* ================================================== */
-.carousel-container {
-    margin: 60px auto;
+/* ====================== */
+/* Universal Carousel System */
+/* ====================== */
+.universal-carousel {
+    margin: 40px auto;
     width: 95%;
     max-width: 1200px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 4px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
 }
 
-.carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.universal-carousel .main-images {
     position: relative;
-    height: auto;
-    min-height: 350px;
-    padding: 0 60px;
-    overflow: hidden;
-}
-
-.carousel-images {
-    position: relative;
-    width: 100%;
     height: 500px;
     overflow: hidden;
 }
 
-.carousel-images img {
+.universal-carousel .main-image {
     display: none;
-    max-width: 95%;
+    width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    margin: 0 auto;
+    animation: fadeIn 0.5s ease forwards;
 }
 
-.carousel-images img.active {
+.universal-carousel .main-image.active {
     display: block;
-    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Navigation Arrows */
+.universal-carousel .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.universal-carousel .nav-arrow.prev {
+    left: -20px;
+}
+
+.universal-carousel .nav-arrow.next {
+    right: -20px;
+}
+
+/* Universal Thumbnail Carousel */
+.thumbnail-carousel {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 10px 0;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.thumbnail-item {
+    scroll-snap-align: center;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+}
+
+.thumbnail-item.active {
+    opacity: 1;
+    border-color: #D1B097;
+    transform: scale(1.05);
+}
+
+/* Universal Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: #665544;
+    transform: scale(1.2);
+}
+
+/* Dark Theme */
+body.dark-theme .thumbnail-item.active {
+    border-color: #665544;
+}
+
+body.dark-theme .carousel-indicator.active {
+    background: #CCD5AE;
 }
 
 .carousel button {
@@ -357,99 +425,6 @@ h4::before {
     transition: all 0.3s ease;
     filter: drop-shadow(0 0 2px rgba(102, 85, 68, 0.5));    
 }
-
-.carousel button:first-of-type {
-    left: -30px;
-}
-
-.carousel button:last-of-type {
-    right: -30px;
-}
-
-/* Thumbnail Carousel Styles */
-.carousel-thumbnails {
-    display: flex;
-    gap: 10px;
-    margin: 15px auto 0;
-    padding: 0 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    max-width: 240px;
-    scroll-snap-type: x mandatory;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.carousel-thumbnails::-webkit-scrollbar {
-    display: none;
-}
-
-.carousel-thumbnails img {
-    scroll-snap-align: center;
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border: 2px solid transparent;
-    border-radius: 4px;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    cursor: pointer;
-}
-
-.carousel-thumbnails img.active-thumb {
-    opacity: 1;
-    border-color: #D1B097;
-    transform: scale(1.05);
-}
-
-/* Indicators */
-.carousel-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    position: relative;
-    z-index: 1;
-    margin-top: -25px;
-    padding-bottom: 15px;
-}
-
-.indicator {
-    width: 10px;
-    height: 10px;
-    background: rgba(102, 85, 68, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.indicator.active {
-    background: #665544;
-    transform: scale(1.3);
-}
-
-/* Dark Theme Overrides */
-body.dark-theme .carousel-thumbnails img.active-thumb {
-    border-color: #665544;
-}
-
-body.dark-theme .indicator {
-    background: rgba(204, 213, 174, 0.3);
-}
-
-body.dark-theme .indicator.active {
-    background: #CCD5AE;
-}
-
-body.dark-theme .carousel button::before {
-    border-color: #CCD5AE;
-}
-
-body.dark-theme .carousel button::after {
-    background: rgba(204, 213, 174, 0.1);
-    box-shadow: 0 0 12px rgba(204, 213, 174, 0.3);
-}
-
 
 
 /* 6. Grid System */
