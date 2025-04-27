@@ -261,33 +261,49 @@ function updateCarousel(id, direction) {
 function goToSlide(id, index) {
   const container = document.getElementById(`items-${id}`);
   const thumbsContainer = document.getElementById(`thumbs-${id}`);
+  const indicators = document.querySelectorAll(`#${id}-section .indicator`);
   const thumbs = thumbsContainer.querySelectorAll("img");
   const images = container.querySelectorAll("img");
 
   container.dataset.index = index;
 
+  // Update main images
   images.forEach((img, i) => {
     img.style.display = i === index ? "block" : "none";
   });
 
+  // Update thumbnails
   thumbs.forEach((thumb, i) => {
-    thumb.classList.toggle("active-thumb", i === index);
-    // Scroll active thumbnail into view
-    if (i === index) {
-      thumb.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center'
-      });
+    const isActive = i === index;
+    thumb.classList.toggle("active-thumb", isActive);
+    
+    if (isActive) {
+      setTimeout(() => { // Ensure smooth scroll after DOM update
+        thumb.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }, 50);
     }
   });
+
+  // Update indicators
+  indicators.forEach((indicator, i) => {
+    indicator.classList.toggle('active', i === index);
+  });
 }
-// Initialize all carousels
+
+// Initialize first slide position
 document.addEventListener("DOMContentLoaded", () => {
-  const allCarousels = document.querySelectorAll(".carousel-images");
-  allCarousels.forEach(container => {
-    const id = container.id.replace("items-", "");
-    goToSlide(id, 0);
+  document.querySelectorAll('.carousel-container').forEach(container => {
+    const id = container.id.replace('-section', '');
+    const thumbs = document.getElementById(`thumbs-${id}`);
+    if (thumbs) {
+      setTimeout(() => {
+        thumbs.scrollLeft = 0; // Reset to first thumbnail
+      }, 100);
+    }
   });
 });
 
