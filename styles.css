@@ -267,6 +267,9 @@ h4::before {
 
 /* 5. Carousel System */
 /* ================================================== */
+
+/* 5. Carousel System */
+/* ================================================== */
 .carousel-container {
     margin: 60px auto;
     width: 95%;
@@ -285,6 +288,7 @@ h4::before {
     height: auto;
     min-height: 350px;
     padding: 0 60px;
+    overflow: hidden;
 }
 
 .carousel-images {
@@ -292,27 +296,21 @@ h4::before {
     width: 100%;
     height: 500px;
     overflow: hidden;
-    white-space: nowrap;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
 }
 
 .carousel-images img {
-    position: absolute;
+    display: none;
     max-width: 95%;
     height: 100%;
     object-fit: contain;
     border-radius: 0 !important;
     box-shadow: none !important;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0 auto;
 }
 
 .carousel-images img.active {
-    opacity: 1;
-    z-index: 2;
+    display: block;
+    animation: fadeIn 0.5s ease forwards;
 }
 
 .carousel button {
@@ -330,22 +328,7 @@ h4::before {
     transform: translateY(-50%);
 }
 
-.carousel button:first-of-type {
-    left: -30px;
-}
-
-.carousel button:last-of-type {
-    right: -30px;
-}
-
-.carousel button:first-of-type:active::before {
-    transform: translate(-35%, -50%) rotate(-45deg) scale(0.95);
-}
-
-.carousel button:last-of-type:active::before {
-    transform: translate(-65%, -50%) rotate(135deg) scale(0.95);
-}
-
+/* Navigation arrows styling */
 .carousel button::after {
     content: '';
     position: absolute;
@@ -375,60 +358,102 @@ h4::before {
     filter: drop-shadow(0 0 2px rgba(102, 85, 68, 0.5));    
 }
 
-.carousel button:first-of-type::before {
-    transform: translate(-35%, -50%) rotate(-45deg);
+.carousel button:first-of-type {
+    left: -30px;
 }
 
-.carousel button:last-of-type::before {
-    transform: translate(-65%, -50%) rotate(135deg);
+.carousel button:last-of-type {
+    right: -30px;
 }
 
-.carousel button:hover::after {
-    background: rgba(204, 213, 174, 0.3);
-    box-shadow: 0 0 15px rgba(204, 213, 174, 0.5);
-    transform: translate(-50%, -50%) scale(1.05);
+/* Thumbnail Carousel Styles */
+.carousel-thumbnails {
+    display: flex;
+    gap: 10px;
+    margin: 15px auto 0;
+    padding: 0 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    max-width: 240px;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.carousel button:hover::before {
-    filter: drop-shadow(0 0 4px rgba(102, 85, 68, 0.5));
+.carousel-thumbnails::-webkit-scrollbar {
+    display: none;
 }
 
-.carousel button:first-of-type:active::after {
-    box-shadow: 0 0 18px rgba(204, 213, 174, 0.5);
-    transform: translate(-50%, -50%) scale(0.95);
-    background: rgba(204, 213, 174, 0.4);
+.carousel-thumbnails img {
+    scroll-snap-align: center;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    cursor: pointer;
 }
 
-.carousel button:last-of-type:active::after {
-    box-shadow: 0 0 18px rgba(204, 213, 174, 0.5);
-    transform: translate(-50%, -50%) scale(0.95);
-    background: rgba(204, 213, 174, 0.4);
+.carousel-thumbnails img.active-thumb {
+    opacity: 1;
+    border-color: #D1B097;
+    transform: scale(1.05);
 }
 
+/* Indicators */
 .carousel-indicators {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+    margin-top: -25px;
+    padding-bottom: 15px;
 }
 
 .indicator {
-    width: 8px;
-    height: 8px;
-    background-color: rgba(102, 85, 68, 0.3);
+    width: 10px;
+    height: 10px;
+    background: rgba(102, 85, 68, 0.3);
     border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .indicator.active {
-    background-color: #665544;
-    transform: scale(1.2);
+    background: #665544;
+    transform: scale(1.3);
 }
 
-.indicator:hover {
-    transform: scale(1.2);
+/* Dark Theme Overrides */
+body.dark-theme .carousel-thumbnails img.active-thumb {
+    border-color: #665544;
 }
+
+body.dark-theme .indicator {
+    background: rgba(204, 213, 174, 0.3);
+}
+
+body.dark-theme .indicator.active {
+    background: #CCD5AE;
+}
+
+body.dark-theme .carousel button::before {
+    border-color: #CCD5AE;
+}
+
+body.dark-theme .carousel button::after {
+    background: rgba(204, 213, 174, 0.1);
+    box-shadow: 0 0 12px rgba(204, 213, 174, 0.3);
+}
+
+
+
+
+
 
 /* Highlight Carousel Styling */
 #nok-highlight-carousel .carousel-slide {
@@ -471,39 +496,6 @@ h4::before {
     object-position: center top;
 }
 
-.carousel-thumbnails {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  padding-bottom: 5px;
-}
-
-.carousel-thumbnails img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  opacity: 0.8;
-  cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-  border-radius: 4px;
-  border: 2px solid transparent;
-  flex-shrink: 0;
-}
-
-.carousel-thumbnails img.active-thumb {
-  opacity: 1;
-  transform: scale(1.05);
-  border-color: #D1B097;
-  scroll-margin-inline: 20px;
-}
-
-body.dark-theme .carousel-thumbnails img.active-thumb {
-  border-color: #665544;
-}
 
 .text-wrap-flex {
   display: flex;
