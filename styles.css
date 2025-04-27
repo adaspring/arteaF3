@@ -618,11 +618,11 @@ body.dark-theme .carousel button::after {
 }
 
 #about.content-section p {
-    font-size: 1.1rem; /* Text size */
+    font-size: 0.8rem; /* Text size */
     text-align: justify; /* Justification */
     line-height: 1.7; /* Line spacing */
     hyphens: auto; /* Better line breaks */
-    max-width: 720px; /* Text column width */
+    max-width: 650px; /* Text column width */
     margin: 0 auto 1rem; /* Center align */
 }
 
