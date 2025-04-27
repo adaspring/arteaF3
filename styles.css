@@ -362,15 +362,16 @@ h4::before {
 /* Left Arrow */
 .carousel button:first-of-type::before {
     border-color: #665544;
-    transform: translate(-50%, -50%) rotate(-135deg);
+    transform: translate(-35%, -50%) rotate(-45deg);
     left: 55%;
 }
+
 
 /* Right Arrow */
 .carousel button:last-of-type::before {
     border-color: #665544;
-    transform: translate(-50%, -50%) rotate(45deg);
     left: 45%;
+    transform: translate(-65%, -50%) rotate(135deg);
 }
 
 /* Dark Theme Arrows */
