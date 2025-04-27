@@ -617,6 +617,16 @@ body.dark-theme .carousel button::after {
     color: #333;
 }
 
+.content-section p {
+    font-size: 1.1rem; /* Text size */
+    text-align: justify; /* Justification */
+    line-height: 1.7; /* Line spacing */
+    hyphens: auto; /* Better line breaks */
+    max-width: 720px; /* Text column width */
+    margin: 0 auto 1rem; /* Center align */
+}
+
+
 .subsection {
     content-visibility: auto;
     contain-intrinsic-size: auto 1000px;
