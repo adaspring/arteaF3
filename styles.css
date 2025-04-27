@@ -359,11 +359,11 @@ h4::before {
 }
 
 .carousel button:first-of-type {
-    left: -40px; /* Adjusted to stay inside the carousel */
+    left: -60px; /* Adjusted to stay inside the carousel */
 }
 
 .carousel button:last-of-type {
-    right: -40px; /* Adjusted to stay inside the carousel */
+    right: -60px; /* Adjusted to stay inside the carousel */
 }
 
 
