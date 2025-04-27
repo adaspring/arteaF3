@@ -357,7 +357,9 @@ h4::before {
     transform-origin: center;
     transition: all 0.3s ease;
     filter: drop-shadow(0 0 2px rgba(102, 85, 68, 0.3));
+    transform: scale(0.95);
 }
+
 
 /* Left Arrow */
 .carousel button:first-of-type::before {
