@@ -258,28 +258,65 @@ function updateCarousel(id, direction) {
   goToSlide(id, newIndex);
 }
 
+// Updated goToSlide function
 function goToSlide(id, index) {
   const container = document.getElementById(`items-${id}`);
-  const thumbs = document.querySelectorAll(`#thumbs-${id} img`);
-  const images = container.querySelectorAll("img");
-
+  const thumbsContainer = document.getElementById(`thumbs-${id}`);
+  const indicators = document.querySelectorAll(`#${id}-section .indicator`);
+  
   container.dataset.index = index;
 
-  images.forEach((img, i) => {
-    img.style.display = i === index ? "block" : "none";
+  // Update main images
+  container.querySelectorAll('img').forEach((img, i) => {
+    img.style.display = i === index ? 'block' : 'none';
   });
 
-  thumbs.forEach((thumb, i) => {
-    thumb.classList.toggle("active-thumb", i === index);
+  // Update thumbnails
+  thumbsContainer.querySelectorAll('img').forEach((thumb, i) => {
+    const isActive = i === index;
+    thumb.classList.toggle('active-thumb', isActive);
+    
+    if(isActive) {
+      setTimeout(() => {
+        thumb.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }, 50);
+    }
+  });
+
+  // Update indicators
+  indicators.forEach((indicator, i) => {
+    indicator.classList.toggle('active', i === index);
   });
 }
 
-// Initialize all carousels
+// Improved initialization
 document.addEventListener("DOMContentLoaded", () => {
-  const allCarousels = document.querySelectorAll(".carousel-images");
-  allCarousels.forEach(container => {
-    const id = container.id.replace("items-", "");
-    goToSlide(id, 0);
+  document.querySelectorAll('.carousel-container').forEach(container => {
+    const id = container.id.replace('-section', '');
+    const thumbs = document.getElementById(`thumbs-${id}`);
+    
+    if(thumbs) {
+      // Wait for images to load before initial positioning
+      const images = thumbs.querySelectorAll('img');
+      let loadedCount = 0;
+      
+      images.forEach(img => {
+        if(img.complete) loadedCount++;
+        else img.addEventListener('load', () => {
+          if(++loadedCount === images.length) {
+            thumbs.scrollLeft = 0;
+          }
+        });
+      });
+      
+      if(loadedCount === images.length) {
+        thumbs.scrollLeft = 0;
+      }
+    }
   });
 });
 
