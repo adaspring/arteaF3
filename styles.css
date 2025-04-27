@@ -76,7 +76,7 @@ a:hover {
 .social-container {
     width: 100%;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 5px;
 }
 
 
@@ -650,6 +650,10 @@ body.dark-theme .carousel button::after {
     margin: 0 auto 1rem; /* Center align */
 }
 
+#about p:last-child {
+    margin-bottom: 1rem; /* Ensure last paragraph has normal spacing */
+}
+
 
 .subsection {
     content-visibility: auto;
@@ -812,7 +816,7 @@ text-align: justify; /* Justification */
 /* 8. Footer & Back to Top */
 /* ================================================== */
 footer {
-    margin-top: 50px;
+    margin-top: 30px;
     padding: 40px 5%;
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
