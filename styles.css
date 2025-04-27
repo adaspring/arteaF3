@@ -408,22 +408,29 @@ h4::before {
 .carousel-indicators {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
+    position: relative;
+  z-index: 1;
+  margin-top: -25px;
+  padding-bottom: 15px;
+  gap: 8px;
+}
+
+
+  
+.indicator.active {
+  background: #665544;
+  transform: scale(1.3);
 }
 
 .indicator {
-    width: 8px;
-    height: 8px;
+    
     background-color: rgba(102, 85, 68, 0.3);
     border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.indicator.active {
-    background-color: #665544;
-    transform: scale(1.2);
+    width: 10px;
+  height: 10px;
+  background: rgba(102, 85, 68, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1):
 }
 
 .indicator:hover {
@@ -471,61 +478,43 @@ h4::before {
     object-position: center top;
 }
 
+/* CAROUSEL SYSTEM ENHANCEMENTS */
 .carousel-thumbnails {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-  flex-wrap: nowrap;
-  overflow-x: hidden;
-  scrollbar-width: thin;
-  padding-bottom: 5px;
-scroll-behavior: smooth; /* Smooth scroll for non-JS interactions */
-  width: 220px; /* Show 3 thumbs (60px + gaps) */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 240px;
   margin: 15px auto 0;
   padding: 0 20px;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  gap: 10px;
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.carousel-thumbnails::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
 }
 
 .carousel-thumbnails img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  opacity: 0.8;
-  cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-  border-radius: 4px;
-  border: 2px solid transparent;
-  flex-shrink: 0;
-  flex: 0 0 60px; /* Prevent shrinking/growing */
+  flex: 0 0 60px;
+  scroll-snap-align: center;
+  transition: transform 0.2s ease;
 }
 
-.carousel-thumbnails img.active-thumb {
-  opacity: 1;
-  transform: scale(1.05);
-  border-color: #D1B097;
-  scroll-margin-inline: 20px;
+
+body.dark-theme .indicator {
+  background: rgba(204, 213, 174, 0.3);
 }
 
+body.dark-theme .indicator.active {
+  background: #CCD5AE;
+}
+ 
 body.dark-theme .carousel-thumbnails img.active-thumb {
   border-color: #665544;
 }
-
-.text-wrap-flex {
-  display: flex;
-  align-items: flex-start;
-  gap: 1em;
-  margin-bottom: 1.5em;
-  flex-wrap: wrap; /* allows better behavior on small screens */
-}
-
-.text-wrap-flex img.wrap-thumbnail {
-  flex-shrink: 0;
-  width: 200px;
-  height: auto;
-  border-radius: 8px;
-}
-
-
 
 /* 6. Grid System */
 /* ================================================== */
