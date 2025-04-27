@@ -1191,91 +1191,51 @@ body.dark-theme .lightbox-caption {
 }
 
 
-/* 12. Image Wrapping */
+/* Add to styles.css */
 /* ====================== */
-
-/* Float-based Wrapping (Classic) */
-.text-wrap-float {
-    float: left;
-    margin: 0 1.5rem 1rem 0;
-    max-width: 45%;
-    shape-outside: margin-box;
-}
-
-.text-wrap-float.right {
-    float: right;
-    margin: 0 0 1rem 1.5rem;
-}
-
-/* Flexbox Wrapping (Modern) */
-.text-wrap-flex {
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-    margin: 1.5rem 0;
-}
-
-.text-wrap-flex img {
-    flex: 0 0 280px;
-    max-width: 40%;
-    height: auto;
-    border-radius: 4px;
-    shape-outside: ellipse(150px 250px at 30% 50%);
-}
-
-/* Grid Wrapping (Advanced) */
+/* 12. Grid Text Flow */
+/* ====================== */
 .text-wrap-grid {
     display: grid;
     grid-template-columns: minmax(250px, 1fr) 2fr;
     gap: 2rem;
+    margin: 1.5rem 0;
     align-items: start;
-    margin: 2rem 0;
 }
 
-.text-wrap-grid img {
+.grid-image-wrapper {
+    position: relative;
+    align-self: start;
+}
+
+.grid-image-wrapper img {
     width: 100%;
     height: auto;
-    grid-column: 1;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.text-wrap-grid.right {
-    grid-template-columns: 2fr minmax(250px, 1fr);
+.post-grid-content {
+    margin: 1.5rem 0 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(102, 85, 68, 0.1);
 }
 
-.text-wrap-grid.right img {
-    grid-column: 2;
-}
-
-/* Responsive Handling */
 @media (max-width: 768px) {
-    .text-wrap-flex,
     .text-wrap-grid {
-        display: block;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
-    .text-wrap-flex img,
-    .text-wrap-grid img {
-        max-width: 100%;
-        float: none;
-        margin: 0 0 1.5rem 0;
+    .post-grid-content {
+        border-top: none;
+        padding-top: 0;
     }
 }
 
-/* Image Caption Style */
-.image-caption {
-    font-size: 0.9rem;
-    color: #665544;
-    margin-top: 0.5rem;
-    text-align: center;
-    font-style: italic;
+body.dark-theme .post-grid-content {
+    border-color: rgba(204, 213, 174, 0.1);
 }
-
-body.dark-theme .image-caption {
-    color: #CCD5AE;
-}
-
-
-
 
 
 
