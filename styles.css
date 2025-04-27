@@ -505,6 +505,38 @@ body.dark-theme .carousel button::after {
     box-shadow: 0 0 12px rgba(204, 213, 174, 0.3);
 }
 
+/* In the Carousel System section */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 15px 0; /* Added vertical margin */
+    padding: 15px 0;
+    order: 3; /* Ensures proper order in flex layout */
+}
+
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Existing carousel-thumbnails rules - add margin-bottom */
+.carousel-thumbnails {
+    margin-bottom: 20px; /* Space between thumbs and indicators */
+    order: 2;
+}
+
+/* Text description styling */
+.category-description {
+    order: 4; /* Places text after indicators */
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+
+
+
 
 
 
