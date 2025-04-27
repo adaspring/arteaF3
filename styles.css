@@ -542,8 +542,13 @@ body.dark-theme .carousel button::after {
 
 .text-image-flex .img-container {
   flex: 0 0 auto; /* Don't grow or shrink */
-  width: 33%; /* Adjust as needed */
-  max-width: 300px;
+  width: 30%; /* Adjust as needed */
+  max-width: 250px;
+}
+
+.text-image-grid .img-container {
+  width: 30%;
+  max-width: 250px;
 }
 
 .text-image-flex .text-content {
