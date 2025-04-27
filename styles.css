@@ -522,12 +522,6 @@ body.dark-theme .carousel button::after {
     order: 4;
 }
 
-/* Keep existing carousel styles */
-
-.carousel {
-    margin-bottom: 0 !important; /* Remove any default spacing */
-}
-
 
 
 
