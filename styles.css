@@ -278,6 +278,7 @@ h4::before {
     border-radius: 4px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: visible;
 }
 
 .carousel {
@@ -288,7 +289,7 @@ h4::before {
     height: auto;
     min-height: 350px;
     padding: 0 60px;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .carousel-images {
@@ -359,11 +360,11 @@ h4::before {
 }
 
 .carousel button:first-of-type {
-    left: 30px; /* Adjusted to stay inside the carousel */
+    left: -30px; /* Adjusted to stay inside the carousel */
 }
 
 .carousel button:last-of-type {
-    right: 30px; /* Adjusted to stay inside the carousel */
+    right: -30px; /* Adjusted to stay inside the carousel */
 }
 
 
