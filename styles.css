@@ -76,7 +76,8 @@ a:hover {
 .social-container {
     width: 100%;
     text-align: center;
-    margin-top: 5px;
+    margin-top: -5px;
+    margin-bottom: -5px
 }
 
 
@@ -816,8 +817,8 @@ text-align: justify; /* Justification */
 /* 8. Footer & Back to Top */
 /* ================================================== */
 footer {
-    margin-top: 30px;
-    padding: 40px 5%;
+    margin-top: 10px;
+    padding: 20px 5%;
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
     color: #665544;
