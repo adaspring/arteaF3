@@ -211,75 +211,65 @@ function setActivePage() {
 // ======================
 // Carousel System
 // ======================
-function initCarousels() {
-    document.querySelectorAll('.carousel-images').forEach(container => {
-        const id = container.id.split('-')[1];
-        const images = container.querySelectorAll('img');
-        
-        // Reset active states
-        images.forEach(img => img.classList.remove('active'));
-        if (images.length > 0) images[0].classList.add('active');
-
-        // Create indicators
-        const carouselContainer = container.closest('.carousel-container');
-        let indicatorsContainer = carouselContainer.querySelector('.carousel-indicators');
-        
-        if (!indicatorsContainer) {
-            indicatorsContainer = document.createElement('div');
-            indicatorsContainer.className = 'carousel-indicators';
-            carouselContainer.appendChild(indicatorsContainer);
-        }
-        
-        indicatorsContainer.innerHTML = '';
-        
-        images.forEach((img, index) => {
-            const indicator = document.createElement('div');
-            indicator.className = 'indicator';
-            if (index === 0) indicator.classList.add('active');
-            indicator.addEventListener('click', () => goToSlide(id, index));
-            indicatorsContainer.appendChild(indicator);
-        });
-        
-        container.dataset.index = 0;
-    });
-}
-
-let currentIndex = 0;  // This is the starting point of your carousel (first image).
-
-function updateCarousel(id, direction) {
-  const container = document.getElementById(`items-${id}`);
-  const index = parseInt(container.dataset.index, 10);
-  const images = container.querySelectorAll("img");
-  let newIndex = direction === "next" ? index + 1 : index - 1;
-
-  if (newIndex < 0) newIndex = images.length - 1;
-  if (newIndex >= images.length) newIndex = 0;
-
-  goToSlide(id, newIndex);
-}
-
+// Updated goToSlide function
 function goToSlide(id, index) {
   const container = document.getElementById(`items-${id}`);
-  const thumbs = document.querySelectorAll(`#thumbs-${id} img`);
-  const images = container.querySelectorAll("img");
-
+  const thumbsContainer = document.getElementById(`thumbs-${id}`);
+  const indicators = document.querySelectorAll(`#${id}-section .indicator`);
+  
   container.dataset.index = index;
 
-  images.forEach((img, i) => {
-    img.style.display = i === index ? "block" : "none";
+  // Update main images
+  container.querySelectorAll('img').forEach((img, i) => {
+    img.style.display = i === index ? 'block' : 'none';
   });
 
-  thumbs.forEach((thumb, i) => {
-    thumb.classList.toggle("active-thumb", i === index);
+  // Update thumbnails
+  thumbsContainer.querySelectorAll('img').forEach((thumb, i) => {
+    const isActive = i === index;
+    thumb.classList.toggle('active-thumb', isActive);
+    
+    if(isActive) {
+      setTimeout(() => {
+        thumb.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }, 50);
+    }
+  });
+
+  // Update indicators
+  indicators.forEach((indicator, i) => {
+    indicator.classList.toggle('active', i === index);
   });
 }
 
-// Initialize all carousels
+// Improved initialization
 document.addEventListener("DOMContentLoaded", () => {
-  const allCarousels = document.querySelectorAll(".carousel-images");
-  allCarousels.forEach(container => {
-    const id = container.id.replace("items-", "");
-    goToSlide(id, 0);
+  document.querySelectorAll('.carousel-container').forEach(container => {
+    const id = container.id.replace('-section', '');
+    const thumbs = document.getElementById(`thumbs-${id}`);
+    
+    if(thumbs) {
+      // Wait for images to load before initial positioning
+      const images = thumbs.querySelectorAll('img');
+      let loadedCount = 0;
+      
+      images.forEach(img => {
+        if(img.complete) loadedCount++;
+        else img.addEventListener('load', () => {
+          if(++loadedCount === images.length) {
+            thumbs.scrollLeft = 0;
+          }
+        });
+      });
+      
+      if(loadedCount === images.length) {
+        thumbs.scrollLeft = 0;
+      }
+    }
   });
 });
 
