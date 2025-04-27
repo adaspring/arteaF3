@@ -505,10 +505,7 @@ body.dark-theme .carousel button::after {
 
 
 /* In Carousel System section */
-.carousel-container {
-    display: flex;
-    flex-direction: column;
-}
+
 
 .carousel-thumbnails {
     margin: 15px 0 20px; /* Preserves original 15px top margin + adds 20px below */
