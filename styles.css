@@ -652,12 +652,13 @@ body.dark-theme .carousel button::after {
     -webkit-hyphens: auto;
     margin-bottom: 0.8rem;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     line-height: 1.6;
     color: #444;
     width: 100%; /* NEW */
     max-width: 100%; /* NEW */
     overflow-wrap: break-word; /* NEW */
+text-align: justify; /* Justification */
 }
 
 .subsection h3,
