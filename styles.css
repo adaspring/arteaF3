@@ -471,6 +471,9 @@ h4::before {
     object-position: center top;
 }
 
+/* ====================== */
+/* Working Thumbnail CSS */
+/* ====================== */
 .carousel-thumbnails {
   display: flex;
   justify-content: center;
@@ -488,7 +491,7 @@ h4::before {
   object-fit: cover;
   opacity: 0.8;
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  transition: all 0.3s ease;
   border-radius: 4px;
   border: 2px solid transparent;
   flex-shrink: 0;
@@ -498,12 +501,26 @@ h4::before {
   opacity: 1;
   transform: scale(1.05);
   border-color: #D1B097;
-  scroll-margin-inline: 20px;
 }
 
 body.dark-theme .carousel-thumbnails img.active-thumb {
   border-color: #665544;
 }
+
+/* Keep these new indicator sync styles */
+.carousel-indicators {
+  position: relative;
+  z-index: 1;
+  margin-top: -25px;
+  padding-bottom: 15px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 
 .text-wrap-flex {
   display: flex;
