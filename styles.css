@@ -425,7 +425,6 @@ h4::before {
 .carousel-thumbnails {
     display: flex;
     gap: 10px;
-    margin: 15px auto 0;
     padding: 0 20px;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -465,7 +464,6 @@ h4::before {
     gap: 8px;
     position: relative;
     z-index: 1;
-    margin-top: -25px;
     padding-bottom: 15px;
 }
 
@@ -504,6 +502,35 @@ body.dark-theme .carousel button::after {
     background: rgba(204, 213, 174, 0.1);
     box-shadow: 0 0 12px rgba(204, 213, 174, 0.3);
 }
+
+
+/* In Carousel System section */
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-thumbnails {
+    margin: 15px 0 20px; /* Preserves original 15px top margin + adds 20px below */
+    order: 2;
+}
+
+.carousel-indicators {
+    margin: 0 0 15px; /* No top margin, 15px bottom */
+    order: 3;
+}
+
+.category-description {
+    margin-top: 0; /* Reset default margins */
+    order: 4;
+}
+
+/* Keep existing carousel styles */
+
+.carousel {
+    margin-bottom: 0 !important; /* Remove any default spacing */
+}
+
 
 
 
