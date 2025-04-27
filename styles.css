@@ -429,7 +429,7 @@ h4::before {
     padding: 0 20px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    max-width: 240px;
+    max-width: 220px;
     scroll-snap-type: x mandatory;
     -ms-overflow-style: none;
     scrollbar-width: none;
