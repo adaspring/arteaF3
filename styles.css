@@ -465,7 +465,7 @@ h4::before {
     gap: 8px;
     position: relative;
     z-index: 1;
-    margin-top: -25px;
+    margin-top: 0px;
     padding-bottom: 15px;
 }
 
