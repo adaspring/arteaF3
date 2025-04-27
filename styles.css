@@ -529,7 +529,7 @@ body.dark-theme .carousel button::after {
 /* Text description styling */
 .category-description {
     order: 4; /* Places text after indicators */
-    margin-top: 20px;
+    margin-top: 5px 0;
     width: 100%;
 }
 
