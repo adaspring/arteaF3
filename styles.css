@@ -295,8 +295,30 @@ h4::before {
     color: #CCD5AE;
 }
 
-/* 5. Carousel System */
-/* ================================================== */
+
+.accent-link {
+    color: #B58463; /* Terracotta color for light mode */
+    transition: all 0.3s ease;
+    font-weight: 400;
+    position: relative;
+    display: inline-block;
+}
+
+.accent-link:hover {
+    color: #9D6B53;
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+/* Dark theme override */
+body.dark-theme .accent-link {
+    color: #E9EDC9; /* Light parchment color */
+}
+
+body.dark-theme .accent-link:hover {
+    color: #CCD5AE;
+    text-decoration: none;
+}
 
 /* 5. Carousel System */
 /* ================================================== */
