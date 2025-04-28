@@ -716,10 +716,10 @@ text-align: justify; /* Justification */
 }
 
 .category-description {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     hyphens: auto;
     -webkit-hyphens: auto;
-    padding: 12px 20px;
+    padding: 10px 18px;
     line-height: 1.5;
     margin: 15px auto 0;
     max-width: 95%;
@@ -727,10 +727,11 @@ text-align: justify; /* Justification */
 
 .category-description {
     margin-top: 10px;
-    font-style: italic;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #665544;
     padding: 0 20px;
     line-height: 1.7;
+    text-align: justify;
 }
 
 .video-container {
