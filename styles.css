@@ -716,11 +716,11 @@ text-align: justify; /* Justification */
 }
 
 .category-description {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     hyphens: auto;
     -webkit-hyphens: auto;
-    padding: 10px 18px;
-    line-height: 1.5;
+    padding: 15px 20px;
+    line-height: 1.0;
     margin: 15px auto 0;
     max-width: 95%;
 }
