@@ -787,10 +787,14 @@ text-align: justify; /* Justification */
 }
 
 .lecture-content p {
-    margin-top: 10px;
+    margin-top: 20px;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-align: justify;
     color: #444;
+    font-size: 0.8rem;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    line-height: 1.0;
 }
 
 .lead {
